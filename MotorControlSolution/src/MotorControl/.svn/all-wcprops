@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl
+END
+RobotBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl/RobotBase.java
+END
+WheelVelocityControllerI.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl/WheelVelocityControllerI.java
+END
+GraphPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl/GraphPanel.java
+END
+MotorControl.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl/MotorControl.java
+END
+RobotVelocityControllerBalanced.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl/RobotVelocityControllerBalanced.java
+END
+VelocityController.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl/VelocityController.java
+END
+WheelVelocityControllerFF.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl/WheelVelocityControllerFF.java
+END
+MotorControlGUI.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl/MotorControlGUI.java
+END
+RobotGraph.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl/RobotGraph.java
+END
+WheelVelocityController.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl/WheelVelocityController.java
+END
+RobotVelocityController.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl/RobotVelocityController.java
+END
+WheelVelocityControllerPWM.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/rss-2015/group4/!svn/ver/137/MotorControlSolution/src/MotorControl/WheelVelocityControllerPWM.java
+END

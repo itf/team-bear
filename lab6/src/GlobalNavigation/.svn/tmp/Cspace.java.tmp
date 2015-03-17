@@ -1,0 +1,59 @@
+package GlobalNavigation;
+
+import java.awt.geom.Point2D;
+import java.util.*;
+
+public class Cspace {
+	protected  java.util.LinkedList<PolygonObstacle> obstacles;
+	
+	public Cspace(java.util.List<PolygonObstacle> realObstacles, double robotRadius) {
+		
+	}
+	
+	public java.util.List<PolygonObstacle> getObstacles(){
+		return null;
+	}
+	protected PolygonObstacle makeCSObstacle(PolygonObstacle realObstacle, double robotRadius){
+		return null;
+	}
+	
+	protected PolygonObstacle computeMinkowskiSum(PolygonObstacle polygon1, PolygonObstacle polygon2){
+		//Sum = (vert(O) ⊕ (	vert(R)))	
+		List<Point2D.Double> poly1Vertices = new arrayList<Point2D.Double>;
+		List<Point2D.Double> poly2Vertices = new arrayList<Point2D.Double>;
+
+		poly1Vertices = polygon1.getVertices();
+		poly2Vertices = polygon2.getVerticies();
+
+		List<Point2D.Double> summedPoints = new arrayList<Point2D.Double>;
+
+		for (int i = 0; i < poly1Vertices.size(); i++) {
+			for (int j = 0; j <poly2Vertices.size(); j++) {
+				Point2D.Double point1 = poly1Vertices.get(i);
+				Point2D.Double point2 = poly2Vertices.get(j);
+
+				double newX = point1.x + point2.x;
+				double newY = point1.y + point2.y;
+
+				summedPoints.add(new Point2D.Double(newX, newY));
+			}
+		}
+
+		PolygonObstacle hull = GeomUtils.convexHull(summedPoints);
+
+		return hull;
+	}
+	
+	protected PolygonObstacle reflectInRelationToPoint(PolygonObstacle polygon, Point2D.Double point){
+		List<Point2D.Double> reflectedVertices = new ArrayList<Point2D.Double>();
+		for (Point2D.Double vertex : polygon.getVertices()) {
+			reflectedVertices.add(new Point2D.Double(point.x - vertex.x, point.y - vertex.y)) ;
+		}
+		PolygonObstacle reflected = new PolygonObstacle();
+		for (Point2D.Double ref : Collections.reverse(reflectedVertices) ) {  // make sure to add points in CCW order
+			reflected.addVertex(ref);
+		}
+		return reflected;
+	}
+	
+}

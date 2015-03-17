@@ -1,0 +1,545 @@
+package LocalNavigation;
+
+import org.ros.message.MessageListener;
+import org.ros.message.rss_msgs.OdometryMsg;
+import org.ros.message.rss_msgs.SonarMsg;
+import org.ros.message.rss_msgs.BumpMsg;
+import org.ros.message.rss_msgs.MotionMsg;
+
+import org.ros.message.lab5_msgs.ColorMsg;
+import org.ros.message.lab5_msgs.GUILineMsg;
+import org.ros.message.lab5_msgs.GUISegmentMsg;
+import org.ros.message.lab5_msgs.GUIEraseMsg;
+import org.ros.message.lab5_msgs.GUIPointMsg;
+
+import org.ros.namespace.GraphName;
+import org.ros.node.Node;
+import org.ros.node.NodeMain;
+import org.ros.node.topic.Publisher;
+import org.ros.node.topic.Subscriber;
+
+import java.io.*;
+import java.nio.charset.*;
+import java.util.*;
+import java.text.*;
+
+public class LocalNavigation implements NodeMain {
+
+    // private static final double sonar_base = 0.25; // distance from fron sonar to back sonar
+
+    private int state;
+    
+    public static final int STOP_ON_BUMP = 0;
+    public static final int ALIGN_ON_BUMP = 1;
+    public static final int ALIGNING = 2;
+    public static final int ALIGNED = 3;
+
+    public static final int ALIGNED_AND_BACKING = 4;
+    public static final int ALIGNED_AND_STOPPED = 5;
+    public static final int ALIGNED_AND_TURNING = 6;
+    public static final int ALIGNED_AND_STOPPED_AGAIN = 7;
+    // public static final int ALIGNED_AND_ROTATED = 8;
+
+    public static final int BACKING_UP = 9;
+    public static final int FINDING_WALL = 10;
+    public static final int TRACKING_WALL = 11;
+    public static final int WALL_ENDED = 12;
+
+    public static final int SEARCHING_FOR_NEXT_WALL = 13;
+
+    public static final double SLOW_SPEED = 0.03;
+    public static final double MEDIUM_SPEED = 0.06;
+
+    // the sonar can see long ranges; this is just the cutoff value at which point we stop
+    // considering the sonar readings as corresponding to the object we care about
+    // in meters
+    public double obstacleCutoff;
+    public double desired_d_from_wall;
+    public double CIRCLE_RADIUS;
+
+
+    public static boolean saveErrors;
+    private static Charset UTF8 = Charset.forName("UTF-8");
+
+    public Subscriber<OdometryMsg> odoSub;
+    public Subscriber<SonarMsg> frontSonarSub;
+    public Subscriber<SonarMsg> backSonarSub;
+    public Subscriber<BumpMsg> bumpSub;
+
+    public Publisher<org.ros.message.std_msgs.String> statePub;
+    public Publisher<MotionMsg> motionPub;
+    
+    //GUI PUBLISHERS
+    public Publisher<GUILineMsg> guiLinePub;
+    public Publisher<GUISegmentMsg> guiSegmentPub;
+    public Publisher<GUIEraseMsg> guiErasePub;
+    public Publisher<GUIPointMsg> guiPointPub;
+    public Publisher<OdometryMsg> resetOdometryPub;
+
+    public LinearRegression linReg;
+
+    protected boolean firstUpdate;
+
+    // position of robot in normal cartesian space. updated by odometry listener
+    public double x;
+    public double y;
+    public double theta;
+
+    // saved position for backing and turning specific amounts
+    public boolean savedPosition = false;
+    public double x0;
+    public double y0;
+    public double theta0;
+    public double desiredTheta;
+
+    public GUISegmentMsg wall;
+
+    public boolean debug;
+
+    // used for making the robot stop for a few loops between actions
+    public int loopCounter;
+
+    // only use the values from lastFront and lastBack when
+    // detectedFront and detectedBack are true
+    // those booleans are set when the range is less than the cutoff value
+    // i.e. detectedFrontObstacle
+    public boolean detectedFront;
+    public boolean detectedBack;
+    public double lastFront; // don't need to initialize these 
+    public double lastBack; 
+    /**
+     * <p>Create a new LocalNavigation object.</p>
+     */
+    public LocalNavigation() {
+	   setInitialParams();
+    }
+    
+    protected void setInitialParams() {
+	    // state = STOP_ON_BUMP;
+        // state = ALIGN_ON_BUMP;
+        saveErrors=true; //save errors, etc to file "errorsFile.txt"
+        firstUpdate = true;
+        debug = true;
+        loopCounter = 0;
+
+        wall = new GUISegmentMsg();
+        detectedFront = false;
+        detectedBack = false;
+
+        obstacleCutoff = 0.6;
+        desired_d_from_wall= 0.5;
+        CIRCLE_RADIUS = Math.sqrt(Math.pow(desired_d_from_wall+8.5*.0254,2) + Math.pow(9.25*.0254,2));    
+        state = SEARCHING_FOR_NEXT_WALL;
+    }
+
+    @Override
+	public void onStart(Node node) {
+    	motionPub = node.newPublisher("command/Motors", "rss_msgs/MotionMsg");
+        statePub = node.newPublisher("/rss/state", "std_msgs/String");
+        guiPointPub = node.newPublisher("gui/Point", "lab5_msgs/GUIPointMsg");
+    	guiLinePub = node.newPublisher("gui/Line",  "lab5_msgs/GUILineMsg");
+        guiSegmentPub = node.newPublisher("gui/Segment",  "lab5_msgs/GUISegmentMsg");
+    	//   	resetOdometryPub = node.newPublisher("/rss/odometry", "rss_msgs/OdometryMsg");
+
+    	//reset odometry on screen
+        /*
+        OdometryMsg resetOdom = new OdometryMsg();
+    	resetOdom.x=0;
+    	resetOdom.y=0;
+    	resetOdom.theta=0;
+    	resetOdometryPub.publish(resetOdom);
+        */
+
+    	linReg= new LinearRegression();
+    	linReg.init();
+
+        odoSub = node.newSubscriber("/rss/odometry", "rss_msgs/OdometryMsg");
+        odoSub.addMessageListener(new MessageListener<OdometryMsg>() {
+            @Override
+            public void onNewMessage(OdometryMsg message) {
+                if (firstUpdate) {
+                    firstUpdate = false;
+                    // gui.resetWorldToView(message.x, message.y);
+                    setMotion(0.0, 0.0);
+                }
+
+                x = message.x;
+                y = message.y;
+                theta = message.theta;
+
+                // state handling:
+                if (state==ALIGNED_AND_BACKING) {
+                    if (!savedPosition) {
+                        x0 = x;
+                        y0 = y;
+                        theta0 = theta;
+                        savedPosition = true;
+                        setMotion(-MEDIUM_SPEED,0.0);
+                    } else {
+                        double dist = Math.sqrt(Math.pow((x0-x),2) + Math.pow((y0-y),2));
+                        if (dist >= desired_d_from_wall) {
+                            savedPosition = false;
+                            state = ALIGNED_AND_STOPPED;
+                        } else {
+                            System.out.println("backing away from wall. currently at distance: " + dist);
+                            setMotion(-MEDIUM_SPEED,0.0);
+                        }
+                    }
+                }
+
+                if (state==ALIGNED_AND_STOPPED) {
+                    waitThenTransition(ALIGNED_AND_TURNING,10);
+                }
+
+                if (state==ALIGNED_AND_TURNING) {
+                    if (!savedPosition) {
+                        x0 = x;
+                        y0 = y;
+                        theta0 = theta;
+                        desiredTheta = theta0 - Math.PI/2+0.05; // because it was turning too far, even with error range
+
+                        if (desiredTheta < 0) desiredTheta += 2*Math.PI;
+
+                        savedPosition = true;
+                        setMotion(0.0,-MEDIUM_SPEED);
+                    } else {
+                        // // be careful: theta does not update very fast, so need a fairly large range
+                        if (Math.abs(theta - desiredTheta) < 0.05) {
+                            savedPosition = false;
+                            state = ALIGNED_AND_STOPPED_AGAIN;
+                        } else {
+                            System.out.println("turning. theta, theta0, desiredtheta: " + theta + ", " + theta0 + ", " + desiredTheta);
+                            setMotion(0.0,-MEDIUM_SPEED);
+                        }
+                    }
+                }
+
+                if (state==ALIGNED_AND_STOPPED_AGAIN) {
+                    waitThenTransition(BACKING_UP, 10);
+                    // IMPORTANT:
+                    linReg.init(); 
+                    // BACKING_UP is handled by sonar sensors
+                }
+            }
+        });
+
+    	frontSonarSub = node.newSubscriber("/rss/Sonars/Front", "rss_msgs/SonarMsg");
+    	frontSonarSub.addMessageListener(new MessageListener<SonarMsg>() {
+		    @Override
+			public void onNewMessage(SonarMsg message) {
+                sonarHandler(message, true);
+    	    }
+    	});
+    	
+    	backSonarSub = node.newSubscriber("/rss/Sonars/Back", "rss_msgs/SonarMsg");
+    	backSonarSub.addMessageListener(new MessageListener<SonarMsg>() {
+		    @Override
+			public void onNewMessage(SonarMsg message) {
+                sonarHandler(message, false);
+		    }	    
+        });
+    	
+    	bumpSub = node.newSubscriber("/rss/BumpSensors", "rss_msgs/BumpMsg");
+    	bumpSub.addMessageListener(new MessageListener<BumpMsg>() {
+		@Override
+		    public void onNewMessage(BumpMsg message) {                
+		    if (state==STOP_ON_BUMP) {
+    			if (message.left || message.right) {
+			    setMotion(0.0,0.0);
+    			}
+		    } else if (state==ALIGN_ON_BUMP) {
+    			// if (message.left || message.right) {
+    			//     state = ALIGNING;
+    			// }
+		    } else if (state==SEARCHING_FOR_NEXT_WALL) {
+                if (message.left || message.right) {
+                    System.out.println("found next wall! aligning now");
+                    state = ALIGNING;
+                } else {
+                    System.out.println("searching for next wall. moving with tv, rv: " + "0.03" + ", " + 0.03/CIRCLE_RADIUS);
+                    double speed = MEDIUM_SPEED;
+                    double rotSpeed = speed/CIRCLE_RADIUS;
+                    setMotion(speed, rotSpeed);
+                }
+            }
+		    
+            // this will execute even if the state was just changed
+            if (state==ALIGNING) {
+                if (message.left && message.right) {
+                    System.out.println("ALIGNED!");
+                    // robot stops and changes state to ALIGNED
+                    setMotion(0.0,0.0);
+                    state = ALIGNED;
+                    debug = false;
+                } else if (message.left) {
+                    System.out.println("left bumper. rotating cc");
+                    // robot rotates counterclockwise
+                    setMotion(0.0, SLOW_SPEED);
+                } else if (message.right) {
+                    System.out.println("right bumper. rotating ccw");
+                    // robot rotates clockwise
+                    setMotion(0.0,-SLOW_SPEED);
+                } else {
+                    // move forward REALLY slowly
+                    System.out.println("neither bumper. moving forward slowly");
+                    setMotion(0.04,0.0);
+                }
+            }
+
+            // ALIGNED. stops in this state for a bit
+            // ALIGNED_AND_BACKING. backs up
+            // ALIGNED_AND_STOPPED. waits
+            // ALIGNED_AND_TURNING. turns
+            // ALIGNED_AND_STOPPED_AGAIN. waits
+            // ALIGNED_AND_ROTATED. go on to next section
+
+            // robot should back up and then turn to be parallel with the wall
+            if (state==ALIGNED) {
+                waitThenTransition(ALIGNED_AND_BACKING, 10);
+            }
+
+            publishState();
+    		}	
+	    });
+    }
+    
+    @Override
+	public void onShutdown(Node node) {
+    	if (node != null) {
+    	    node.shutdown();
+    	}
+    }
+    
+    @Override
+	public void onShutdownComplete(Node node) {
+    }
+    
+    @Override
+	public GraphName getDefaultNodeName() {
+	return new GraphName("rss/local_nav");
+    }
+
+    public void sonarHandler(SonarMsg message, boolean isFrontSonar) {
+        if (message.range<obstacleCutoff) {
+            if (isFrontSonar) {
+                detectedFront = true;
+                lastFront = message.range;
+                if (state == ALIGNED_AND_STOPPED_AGAIN || (state>=9&&state<=12)) System.out.println("front sonar: " + message.range);
+            } else {
+                detectedBack = true;
+                lastBack = message.range;
+                if (state == ALIGNED_AND_STOPPED_AGAIN || (state>=9&&state<=12)) System.out.println("back sonar: " + message.range);
+            }
+
+        } else {
+            if (isFrontSonar) {
+                detectedFront = false;
+                // lastFront = -1.0;
+            } else {
+                detectedBack = false;
+                // lastBack = -1.0;
+            }
+        }
+
+        GUIPointMsg point;
+        if (isFrontSonar) {
+            point = calculateAndPublishPoint(message, 5.7*0.0254, isFrontSonar);
+        } else {
+            point = calculateAndPublishPoint(message, -7.5*0.0254, isFrontSonar);
+        }
+
+        // follow the wall while moving backwards
+        if (state==BACKING_UP) {
+            if (message.range<obstacleCutoff) linReg.update(point.x, point.y);
+            if (!detectedFront && !detectedBack) {
+                waitThenTransition(FINDING_WALL,50);
+                linReg.init();
+            } else {
+                // proportional controller to keep robot parallel to wall
+                // while moving backwards
+                if (detectedFront && detectedBack) {
+        		    if (saveErrors){
+            			try {
+            			    FileWriter writer = new FileWriter("./savedErrorsBackingUp.txt");
+            			    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            			    Date date = new Date();
+            			    writer.write(dateFormat.format(date)); //2014/08/06 15:59:48. example from mkyong.com
+            			    writer.write(" " + ((lastBack+lastFront)/2) + " " + Math.atan((lastBack-lastFront)/0.26035));//translation error, rotation error
+            			    writer.close();
+            	       	} catch(IOException e) {
+            			    e.printStackTrace();
+            			}
+		            }
+                    // should turn to try to minimize difference between sonar readings
+                    // positive rv means ccw means decreasing front range and increasing back range
+                    // e.g. if front range is 0.5 and back is 0.48 (significant angle), rotvel should be 0.02
+                    // move slowly while correcting
+                    setMotion(-0.05,1.5*(lastFront-lastBack));
+                } else {
+                    setMotion(-0.05,0.0);
+                }
+            }
+        }
+
+        if (state==FINDING_WALL) {
+            if (message.range<obstacleCutoff) linReg.update(point.x, point.y);
+            if (detectedFront || detectedBack) {
+                // save the point that caused the transition
+                wall.startX = point.x;
+                wall.startY = point.y;
+                waitThenTransition(TRACKING_WALL,50);                
+                linReg.init();
+            } else {
+                // slowly walk forward
+                setMotion(SLOW_SPEED, 0.0);
+            }
+        }
+
+        if (state==TRACKING_WALL) {
+            if (message.range<obstacleCutoff) linReg.update(point.x, point.y);
+            if (!detectedFront && !detectedBack) {
+                // save the point that caused the transition
+                wall.endX = point.x;
+                wall.endY = point.y;
+                waitThenTransition(WALL_ENDED,50);
+            } else {
+                // proportional controller to keep robot parallel to wall 
+                // while going forwards
+                double rv;
+                if (saveErrors){
+                    try {
+                        Writer writer = new OutputStreamWriter(new FileOutputStream("./savedErrorsTrackingWall.txt"), UTF8);
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                        Date date = new Date();
+                        writer.write(dateFormat.format(date)); //2014/08/06 15:59:48. example from mkyong.com
+                        writer.write(" " + ((lastBack+lastFront)/2) + " " + Math.atan((lastBack-lastFront)/0.26035));//translation error, rotation error
+                        writer.close();
+                    } catch(IOException e){
+                        e.printStackTrace();
+                    }
+                }
+        		if (detectedFront && detectedBack) {
+                    // should turn to try to minimize difference between sonar readings
+                    // positive rv means ccw means decreasing front range and increasing back range
+                    // e.g. if front range is 0.5 and back is 0.48 (significant angle), rotvel should be 0.02
+                    // move slowly while correcting
+                    setMotion(MEDIUM_SPEED,1.5*(lastFront-lastBack));
+        		} else {
+                    setMotion(MEDIUM_SPEED,0.0);
+                }
+            }
+        }
+
+        if (state==WALL_ENDED) {
+            System.out.println("entered state WALL_ENDED");
+            System.out.println("wall start x,y: " + wall.startX + "," + wall.startY);
+            System.out.println("wall ended x,y: " + wall.endX + "," + wall.endY);
+            ColorMsg wallColor = new ColorMsg(); //TODO RANDOM COLOR
+            // wallColor.r = 255;
+            // wallColor.g = 204;
+            // wallColor.b = 153;
+            // wall.color = wallColor; // orange
+            wallColor.r = (int) Math.random()*256;
+            wallColor.g = (int) Math.random()*256;
+            wallColor.b = (int) Math.random()*256;
+            wall.color = wallColor;
+
+    	    double tempX =wall.startX;
+    	    double tempY =wall.startY;
+    	    wall.startX=linReg.projectPointX(tempX,tempY);
+    	    wall.startY=linReg.projectPointY(tempX,tempY);
+
+    	    tempX =wall.endX;
+    	    tempY =wall.endY;
+    	    wall.endX=linReg.projectPointX(tempX,tempY);
+    	    wall.endY=linReg.projectPointY(tempX,tempY);
+
+            guiSegmentPub.publish(wall);
+            waitThenTransition(SEARCHING_FOR_NEXT_WALL,50);
+        }
+
+        publishLine();
+        publishState();
+    }
+
+    // the waiting is NOT done inside this method
+    // rather, this method is called [loops] times and ...
+    public void waitThenTransition(int next, int loops) {
+        setMotion(0.0,0.0);
+        if (loopCounter > loops) {
+            state = next;
+            loopCounter = 0;
+        } else {
+            loopCounter +=1;
+            System.out.println("waiting in state: " + state + " loop count: " + loopCounter);
+        }
+    } 
+
+    /////////////////////////////////////////////////////////////////////////////////////////
+    ////// pretty confident in the below functions. probably shouldn't have to modify ///////
+    /////////////////////////////////////////////////////////////////////////////////////////
+
+    public void setMotion(double transVel, double rotVel) {
+        MotionMsg msg = new MotionMsg();
+        msg.translationalVelocity = transVel;
+        msg.rotationalVelocity=rotVel;
+        motionPub.publish(msg);
+    }
+    
+    public void publishState() {
+        String temp = "new state: " + state;
+        org.ros.message.std_msgs.String message = new org.ros.message.std_msgs.String();
+        message.data = temp;
+        statePub.publish(message);
+    }
+
+    // does the trig to calculate the point's location
+    // displacement is the distance (in m) from the sonar sensor to the origin of the robot along the (robot's) x-axis
+    public GUIPointMsg calculateAndPublishPoint(SonarMsg msg, double displacement, boolean colorBlue) {
+        GUIPointMsg point = new GUIPointMsg();
+        point.x = x + displacement*Math.cos(theta) + (0.20 + msg.range)*Math.cos(theta+Math.PI/2);
+        point.y = y + displacement*Math.sin(theta) + (0.20 + msg.range)*Math.sin(theta+Math.PI/2);
+        point.shape = 1;
+
+        ColorMsg pointCol = new ColorMsg();
+
+        if (msg.range<obstacleCutoff) { 
+            // linReg.update(point.x, point.y);
+            // blue for back sonar, red for front
+            if (colorBlue) {
+                pointCol.r=0;
+                pointCol.b=255;
+                pointCol.g=0;
+            } else {
+                pointCol.r=255;
+                pointCol.b=0;
+                pointCol.g=0;
+            }
+        }
+        else { // green
+            pointCol.r = 0;
+            pointCol.g = 255;
+            pointCol.b = 0;
+        }
+        point.color = pointCol;
+
+        guiPointPub.publish(point);
+        return point;
+    }
+
+    public void publishLine(){
+        GUILineMsg lineMsg = new GUILineMsg();
+        lineMsg.lineA= linReg.getA();
+        lineMsg.lineB= linReg.getB();
+        lineMsg.lineC= linReg.getC();
+
+        ColorMsg lineColor = new ColorMsg();
+        lineColor.r = 0;
+        lineColor.g = 127;
+        lineColor.b = 0;
+
+        lineMsg.color = lineColor;
+        // System.out.println("publishing line: " + lineMsg.lineA + ", " + lineMsg.lineB + ", " + lineMsg.lineC); 
+        guiLinePub.publish(lineMsg);
+    }
+}

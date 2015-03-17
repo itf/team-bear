@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/rss-2015/group4/!svn/ver/505/lab5
+END
+manifest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/rss-2015/group4/!svn/ver/240/lab5/manifest.xml
+END
+dependencies.xml
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/rss-2015/group4/!svn/ver/379/lab5/dependencies.xml
+END
+message_spec.txt
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/rss-2015/group4/!svn/ver/240/lab5/message_spec.txt
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/rss-2015/group4/!svn/ver/240/lab5/CMakeLists.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/rss-2015/group4/!svn/ver/240/lab5/Makefile
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/rss-2015/group4/!svn/ver/240/lab5/build.xml
+END

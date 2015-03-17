@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/rss-2015/group4/!svn/ver/20/MotorControl/plots
+END
+FFVel_Loaded.gp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/rss-2015/group4/!svn/ver/6/MotorControl/plots/FFVel_Loaded.gp
+END
+FFVel_Unloaded.gp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/rss-2015/group4/!svn/ver/6/MotorControl/plots/FFVel_Unloaded.gp
+END
+pwmplot.ps
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/rss-2015/group4/!svn/ver/12/MotorControl/plots/pwmplot.ps
+END
+PVel_VariedGain.gp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/rss-2015/group4/!svn/ver/6/MotorControl/plots/PVel_VariedGain.gp
+END
+ffloaded.ps
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/rss-2015/group4/!svn/ver/12/MotorControl/plots/ffloaded.ps
+END
+PVel_FixedGain.gp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/rss-2015/group4/!svn/ver/6/MotorControl/plots/PVel_FixedGain.gp
+END
+DError_Loaded.gp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/rss-2015/group4/!svn/ver/6/MotorControl/plots/DError_Loaded.gp
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/rss-2015/group4/!svn/ver/6/MotorControl/plots/README.txt
+END
+ffplot.ps
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/rss-2015/group4/!svn/ver/12/MotorControl/plots/ffplot.ps
+END
+makeplot
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/rss-2015/group4/!svn/ver/6/MotorControl/plots/makeplot
+END
+q11loaded.ps
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/rss-2015/group4/!svn/ver/20/MotorControl/plots/q11loaded.ps
+END
+Vel_PWM.gp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/rss-2015/group4/!svn/ver/6/MotorControl/plots/Vel_PWM.gp
+END
+loadedIntegralPlot.ps
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/rss-2015/group4/!svn/ver/20/MotorControl/plots/loadedIntegralPlot.ps
+END

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/rss-2015/group4/!svn/ver/613/lab7/src/Grasping
+END
+ArmController.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/rss-2015/group4/!svn/ver/613/lab7/src/Grasping/ArmController.java
+END
+SensorAverage.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/rss-2015/group4/!svn/ver/503/lab7/src/Grasping/SensorAverage.java
+END
+JointController.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/rss-2015/group4/!svn/ver/605/lab7/src/Grasping/JointController.java
+END
+ShoulderController.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/rss-2015/group4/!svn/ver/592/lab7/src/Grasping/ShoulderController.java
+END
+Grasping.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/rss-2015/group4/!svn/ver/524/lab7/src/Grasping/Grasping.java
+END
+ArmPoseGUI.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/rss-2015/group4/!svn/ver/503/lab7/src/Grasping/ArmPoseGUI.java
+END
+Grasping2.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/rss-2015/group4/!svn/ver/610/lab7/src/Grasping/Grasping2.java
+END
+GripperController.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/rss-2015/group4/!svn/ver/592/lab7/src/Grasping/GripperController.java
+END
+WristController.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/rss-2015/group4/!svn/ver/592/lab7/src/Grasping/WristController.java
+END
+ArmVisualizerPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/rss-2015/group4/!svn/ver/503/lab7/src/Grasping/ArmVisualizerPanel.java
+END

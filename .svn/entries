@@ -1,0 +1,175 @@
+10
+
+dir
+612
+https://svn.csail.mit.edu/rss-2015/group4
+https://svn.csail.mit.edu/rss-2015/group4
+
+
+
+2015-03-17T21:44:29.631880Z
+612
+rss-student
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+c2bb957b-a3c2-4bf5-87f2-6fd2e6c54629
+
+lab4
+dir
+
+lab5
+dir
+
+lab6
+dir
+
+lab7
+dir
+
+uorc_publisher
+dir
+
+ChassisSolution
+dir
+
+roscv
+dir
+
+Chassis
+dir
+
+MotorControlSolution
+dir
+
+rss_msgs
+dir
+
+MotorControl
+dir
+
+odometry
+dir
+
+orc_utils
+dir
+
+memberlist
+file
+
+
+
+
+2015-02-11T21:09:54.908749Z
+0ccb6a7d893ac19a65ada8d85ddc0327
+2015-02-11T21:08:45.591899Z
+5
+rss-student
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+47
+
+uORCInterface.jar
+file
+
+
+
+
+2015-02-16T20:29:47.409053Z
+9af98858c986318e85eed24983743119
+2015-02-11T21:19:51.332392Z
+6
+rss-student
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+12784
+
+video_settings.txt
+file
+
+
+
+
+2015-02-23T22:46:48.980587Z
+78e2680ee719d74857e3e5908d119a5d
+2015-02-23T22:47:24.393282Z
+150
+rss-student
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+695
+
+lab5_msgs
+dir
+
+uorc_listener
+dir
+

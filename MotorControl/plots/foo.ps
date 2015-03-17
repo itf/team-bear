@@ -1,0 +1,1688 @@
+%!PS-Adobe-2.0
+%%Title: plot.ps
+%%Creator: gnuplot 4.4 patchlevel 3
+%%CreationDate: Mon Feb 16 16:24:05 2015
+%%DocumentFonts: (atend)
+%%BoundingBox: 50 50 554 770
+%%Orientation: Landscape
+%%Pages: (atend)
+%%EndComments
+%%BeginProlog
+/gnudict 256 dict def
+gnudict begin
+%
+% The following true/false flags may be edited by hand if desired.
+% The unit line width and grayscale image gamma correction may also be changed.
+%
+/Color false def
+/Blacktext false def
+/Solid false def
+/Dashlength 1 def
+/Landscape true def
+/Level1 false def
+/Rounded false def
+/ClipToBoundingBox false def
+/TransparentPatterns false def
+/gnulinewidth 10.000 def
+/userlinewidth gnulinewidth def
+/Gamma 1.0 def
+%
+/vshift -46 def
+/dl1 {
+  10.0 Dashlength mul mul
+  Rounded { currentlinewidth 0.75 mul sub dup 0 le { pop 0.01 } if } if
+} def
+/dl2 {
+  10.0 Dashlength mul mul
+  Rounded { currentlinewidth 0.75 mul add } if
+} def
+/hpt_ 31.5 def
+/vpt_ 31.5 def
+/hpt hpt_ def
+/vpt vpt_ def
+Level1 {} {
+/SDict 10 dict def
+systemdict /pdfmark known not {
+  userdict /pdfmark systemdict /cleartomark get put
+} if
+SDict begin [
+  /Title (plot.ps)
+  /Subject (gnuplot plot)
+  /Creator (gnuplot 4.4 patchlevel 3)
+  /Author (rss-student)
+%  /Producer (gnuplot)
+%  /Keywords ()
+  /CreationDate (Mon Feb 16 16:24:05 2015)
+  /DOCINFO pdfmark
+end
+} ifelse
+/doclip {
+  ClipToBoundingBox {
+    newpath 50 50 moveto 554 50 lineto 554 770 lineto 50 770 lineto closepath
+    clip
+  } if
+} def
+%
+% Gnuplot Prolog Version 4.4 (August 2010)
+%
+%/SuppressPDFMark true def
+%
+/M {moveto} bind def
+/L {lineto} bind def
+/R {rmoveto} bind def
+/V {rlineto} bind def
+/N {newpath moveto} bind def
+/Z {closepath} bind def
+/C {setrgbcolor} bind def
+/f {rlineto fill} bind def
+/g {setgray} bind def
+/Gshow {show} def   % May be redefined later in the file to support UTF-8
+/vpt2 vpt 2 mul def
+/hpt2 hpt 2 mul def
+/Lshow {currentpoint stroke M 0 vshift R 
+	Blacktext {gsave 0 setgray show grestore} {show} ifelse} def
+/Rshow {currentpoint stroke M dup stringwidth pop neg vshift R
+	Blacktext {gsave 0 setgray show grestore} {show} ifelse} def
+/Cshow {currentpoint stroke M dup stringwidth pop -2 div vshift R 
+	Blacktext {gsave 0 setgray show grestore} {show} ifelse} def
+/UP {dup vpt_ mul /vpt exch def hpt_ mul /hpt exch def
+  /hpt2 hpt 2 mul def /vpt2 vpt 2 mul def} def
+/DL {Color {setrgbcolor Solid {pop []} if 0 setdash}
+ {pop pop pop 0 setgray Solid {pop []} if 0 setdash} ifelse} def
+/BL {stroke userlinewidth 2 mul setlinewidth
+	Rounded {1 setlinejoin 1 setlinecap} if} def
+/AL {stroke userlinewidth 2 div setlinewidth
+	Rounded {1 setlinejoin 1 setlinecap} if} def
+/UL {dup gnulinewidth mul /userlinewidth exch def
+	dup 1 lt {pop 1} if 10 mul /udl exch def} def
+/PL {stroke userlinewidth setlinewidth
+	Rounded {1 setlinejoin 1 setlinecap} if} def
+3.8 setmiterlimit
+% Default Line colors
+/LCw {1 1 1} def
+/LCb {0 0 0} def
+/LCa {0 0 0} def
+/LC0 {1 0 0} def
+/LC1 {0 1 0} def
+/LC2 {0 0 1} def
+/LC3 {1 0 1} def
+/LC4 {0 1 1} def
+/LC5 {1 1 0} def
+/LC6 {0 0 0} def
+/LC7 {1 0.3 0} def
+/LC8 {0.5 0.5 0.5} def
+% Default Line Types
+/LTw {PL [] 1 setgray} def
+/LTb {BL [] LCb DL} def
+/LTa {AL [1 udl mul 2 udl mul] 0 setdash LCa setrgbcolor} def
+/LT0 {PL [] LC0 DL} def
+/LT1 {PL [4 dl1 2 dl2] LC1 DL} def
+/LT2 {PL [2 dl1 3 dl2] LC2 DL} def
+/LT3 {PL [1 dl1 1.5 dl2] LC3 DL} def
+/LT4 {PL [6 dl1 2 dl2 1 dl1 2 dl2] LC4 DL} def
+/LT5 {PL [3 dl1 3 dl2 1 dl1 3 dl2] LC5 DL} def
+/LT6 {PL [2 dl1 2 dl2 2 dl1 6 dl2] LC6 DL} def
+/LT7 {PL [1 dl1 2 dl2 6 dl1 2 dl2 1 dl1 2 dl2] LC7 DL} def
+/LT8 {PL [2 dl1 2 dl2 2 dl1 2 dl2 2 dl1 2 dl2 2 dl1 4 dl2] LC8 DL} def
+/Pnt {stroke [] 0 setdash gsave 1 setlinecap M 0 0 V stroke grestore} def
+/Dia {stroke [] 0 setdash 2 copy vpt add M
+  hpt neg vpt neg V hpt vpt neg V
+  hpt vpt V hpt neg vpt V closepath stroke
+  Pnt} def
+/Pls {stroke [] 0 setdash vpt sub M 0 vpt2 V
+  currentpoint stroke M
+  hpt neg vpt neg R hpt2 0 V stroke
+ } def
+/Box {stroke [] 0 setdash 2 copy exch hpt sub exch vpt add M
+  0 vpt2 neg V hpt2 0 V 0 vpt2 V
+  hpt2 neg 0 V closepath stroke
+  Pnt} def
+/Crs {stroke [] 0 setdash exch hpt sub exch vpt add M
+  hpt2 vpt2 neg V currentpoint stroke M
+  hpt2 neg 0 R hpt2 vpt2 V stroke} def
+/TriU {stroke [] 0 setdash 2 copy vpt 1.12 mul add M
+  hpt neg vpt -1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt 1.62 mul V closepath stroke
+  Pnt} def
+/Star {2 copy Pls Crs} def
+/BoxF {stroke [] 0 setdash exch hpt sub exch vpt add M
+  0 vpt2 neg V hpt2 0 V 0 vpt2 V
+  hpt2 neg 0 V closepath fill} def
+/TriUF {stroke [] 0 setdash vpt 1.12 mul add M
+  hpt neg vpt -1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt 1.62 mul V closepath fill} def
+/TriD {stroke [] 0 setdash 2 copy vpt 1.12 mul sub M
+  hpt neg vpt 1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt -1.62 mul V closepath stroke
+  Pnt} def
+/TriDF {stroke [] 0 setdash vpt 1.12 mul sub M
+  hpt neg vpt 1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt -1.62 mul V closepath fill} def
+/DiaF {stroke [] 0 setdash vpt add M
+  hpt neg vpt neg V hpt vpt neg V
+  hpt vpt V hpt neg vpt V closepath fill} def
+/Pent {stroke [] 0 setdash 2 copy gsave
+  translate 0 hpt M 4 {72 rotate 0 hpt L} repeat
+  closepath stroke grestore Pnt} def
+/PentF {stroke [] 0 setdash gsave
+  translate 0 hpt M 4 {72 rotate 0 hpt L} repeat
+  closepath fill grestore} def
+/Circle {stroke [] 0 setdash 2 copy
+  hpt 0 360 arc stroke Pnt} def
+/CircleF {stroke [] 0 setdash hpt 0 360 arc fill} def
+/C0 {BL [] 0 setdash 2 copy moveto vpt 90 450 arc} bind def
+/C1 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 0 90 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C2 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 90 180 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C3 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 0 180 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C4 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 180 270 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C5 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 0 90 arc
+	2 copy moveto
+	2 copy vpt 180 270 arc closepath fill
+	vpt 0 360 arc} bind def
+/C6 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 90 270 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C7 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 0 270 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C8 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 270 360 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C9 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 270 450 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C10 {BL [] 0 setdash 2 copy 2 copy moveto vpt 270 360 arc closepath fill
+	2 copy moveto
+	2 copy vpt 90 180 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C11 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 0 180 arc closepath fill
+	2 copy moveto
+	2 copy vpt 270 360 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C12 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 180 360 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C13 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 0 90 arc closepath fill
+	2 copy moveto
+	2 copy vpt 180 360 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/C14 {BL [] 0 setdash 2 copy moveto
+	2 copy vpt 90 360 arc closepath fill
+	vpt 0 360 arc} bind def
+/C15 {BL [] 0 setdash 2 copy vpt 0 360 arc closepath fill
+	vpt 0 360 arc closepath} bind def
+/Rec {newpath 4 2 roll moveto 1 index 0 rlineto 0 exch rlineto
+	neg 0 rlineto closepath} bind def
+/Square {dup Rec} bind def
+/Bsquare {vpt sub exch vpt sub exch vpt2 Square} bind def
+/S0 {BL [] 0 setdash 2 copy moveto 0 vpt rlineto BL Bsquare} bind def
+/S1 {BL [] 0 setdash 2 copy vpt Square fill Bsquare} bind def
+/S2 {BL [] 0 setdash 2 copy exch vpt sub exch vpt Square fill Bsquare} bind def
+/S3 {BL [] 0 setdash 2 copy exch vpt sub exch vpt2 vpt Rec fill Bsquare} bind def
+/S4 {BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt Square fill Bsquare} bind def
+/S5 {BL [] 0 setdash 2 copy 2 copy vpt Square fill
+	exch vpt sub exch vpt sub vpt Square fill Bsquare} bind def
+/S6 {BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt vpt2 Rec fill Bsquare} bind def
+/S7 {BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt vpt2 Rec fill
+	2 copy vpt Square fill Bsquare} bind def
+/S8 {BL [] 0 setdash 2 copy vpt sub vpt Square fill Bsquare} bind def
+/S9 {BL [] 0 setdash 2 copy vpt sub vpt vpt2 Rec fill Bsquare} bind def
+/S10 {BL [] 0 setdash 2 copy vpt sub vpt Square fill 2 copy exch vpt sub exch vpt Square fill
+	Bsquare} bind def
+/S11 {BL [] 0 setdash 2 copy vpt sub vpt Square fill 2 copy exch vpt sub exch vpt2 vpt Rec fill
+	Bsquare} bind def
+/S12 {BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt2 vpt Rec fill Bsquare} bind def
+/S13 {BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt2 vpt Rec fill
+	2 copy vpt Square fill Bsquare} bind def
+/S14 {BL [] 0 setdash 2 copy exch vpt sub exch vpt sub vpt2 vpt Rec fill
+	2 copy exch vpt sub exch vpt Square fill Bsquare} bind def
+/S15 {BL [] 0 setdash 2 copy Bsquare fill Bsquare} bind def
+/D0 {gsave translate 45 rotate 0 0 S0 stroke grestore} bind def
+/D1 {gsave translate 45 rotate 0 0 S1 stroke grestore} bind def
+/D2 {gsave translate 45 rotate 0 0 S2 stroke grestore} bind def
+/D3 {gsave translate 45 rotate 0 0 S3 stroke grestore} bind def
+/D4 {gsave translate 45 rotate 0 0 S4 stroke grestore} bind def
+/D5 {gsave translate 45 rotate 0 0 S5 stroke grestore} bind def
+/D6 {gsave translate 45 rotate 0 0 S6 stroke grestore} bind def
+/D7 {gsave translate 45 rotate 0 0 S7 stroke grestore} bind def
+/D8 {gsave translate 45 rotate 0 0 S8 stroke grestore} bind def
+/D9 {gsave translate 45 rotate 0 0 S9 stroke grestore} bind def
+/D10 {gsave translate 45 rotate 0 0 S10 stroke grestore} bind def
+/D11 {gsave translate 45 rotate 0 0 S11 stroke grestore} bind def
+/D12 {gsave translate 45 rotate 0 0 S12 stroke grestore} bind def
+/D13 {gsave translate 45 rotate 0 0 S13 stroke grestore} bind def
+/D14 {gsave translate 45 rotate 0 0 S14 stroke grestore} bind def
+/D15 {gsave translate 45 rotate 0 0 S15 stroke grestore} bind def
+/DiaE {stroke [] 0 setdash vpt add M
+  hpt neg vpt neg V hpt vpt neg V
+  hpt vpt V hpt neg vpt V closepath stroke} def
+/BoxE {stroke [] 0 setdash exch hpt sub exch vpt add M
+  0 vpt2 neg V hpt2 0 V 0 vpt2 V
+  hpt2 neg 0 V closepath stroke} def
+/TriUE {stroke [] 0 setdash vpt 1.12 mul add M
+  hpt neg vpt -1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt 1.62 mul V closepath stroke} def
+/TriDE {stroke [] 0 setdash vpt 1.12 mul sub M
+  hpt neg vpt 1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt -1.62 mul V closepath stroke} def
+/PentE {stroke [] 0 setdash gsave
+  translate 0 hpt M 4 {72 rotate 0 hpt L} repeat
+  closepath stroke grestore} def
+/CircE {stroke [] 0 setdash 
+  hpt 0 360 arc stroke} def
+/Opaque {gsave closepath 1 setgray fill grestore 0 setgray closepath} def
+/DiaW {stroke [] 0 setdash vpt add M
+  hpt neg vpt neg V hpt vpt neg V
+  hpt vpt V hpt neg vpt V Opaque stroke} def
+/BoxW {stroke [] 0 setdash exch hpt sub exch vpt add M
+  0 vpt2 neg V hpt2 0 V 0 vpt2 V
+  hpt2 neg 0 V Opaque stroke} def
+/TriUW {stroke [] 0 setdash vpt 1.12 mul add M
+  hpt neg vpt -1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt 1.62 mul V Opaque stroke} def
+/TriDW {stroke [] 0 setdash vpt 1.12 mul sub M
+  hpt neg vpt 1.62 mul V
+  hpt 2 mul 0 V
+  hpt neg vpt -1.62 mul V Opaque stroke} def
+/PentW {stroke [] 0 setdash gsave
+  translate 0 hpt M 4 {72 rotate 0 hpt L} repeat
+  Opaque stroke grestore} def
+/CircW {stroke [] 0 setdash 
+  hpt 0 360 arc Opaque stroke} def
+/BoxFill {gsave Rec 1 setgray fill grestore} def
+/Density {
+  /Fillden exch def
+  currentrgbcolor
+  /ColB exch def /ColG exch def /ColR exch def
+  /ColR ColR Fillden mul Fillden sub 1 add def
+  /ColG ColG Fillden mul Fillden sub 1 add def
+  /ColB ColB Fillden mul Fillden sub 1 add def
+  ColR ColG ColB setrgbcolor} def
+/BoxColFill {gsave Rec PolyFill} def
+/PolyFill {gsave Density fill grestore grestore} def
+/h {rlineto rlineto rlineto gsave closepath fill grestore} bind def
+%
+% PostScript Level 1 Pattern Fill routine for rectangles
+% Usage: x y w h s a XX PatternFill
+%	x,y = lower left corner of box to be filled
+%	w,h = width and height of box
+%	  a = angle in degrees between lines and x-axis
+%	 XX = 0/1 for no/yes cross-hatch
+%
+/PatternFill {gsave /PFa [ 9 2 roll ] def
+  PFa 0 get PFa 2 get 2 div add PFa 1 get PFa 3 get 2 div add translate
+  PFa 2 get -2 div PFa 3 get -2 div PFa 2 get PFa 3 get Rec
+  gsave 1 setgray fill grestore clip
+  currentlinewidth 0.5 mul setlinewidth
+  /PFs PFa 2 get dup mul PFa 3 get dup mul add sqrt def
+  0 0 M PFa 5 get rotate PFs -2 div dup translate
+  0 1 PFs PFa 4 get div 1 add floor cvi
+	{PFa 4 get mul 0 M 0 PFs V} for
+  0 PFa 6 get ne {
+	0 1 PFs PFa 4 get div 1 add floor cvi
+	{PFa 4 get mul 0 2 1 roll M PFs 0 V} for
+ } if
+  stroke grestore} def
+%
+/languagelevel where
+ {pop languagelevel} {1} ifelse
+ 2 lt
+	{/InterpretLevel1 true def}
+	{/InterpretLevel1 Level1 def}
+ ifelse
+%
+% PostScript level 2 pattern fill definitions
+%
+/Level2PatternFill {
+/Tile8x8 {/PaintType 2 /PatternType 1 /TilingType 1 /BBox [0 0 8 8] /XStep 8 /YStep 8}
+	bind def
+/KeepColor {currentrgbcolor [/Pattern /DeviceRGB] setcolorspace} bind def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop 0 0 M 8 8 L 0 8 M 8 0 L stroke} 
+>> matrix makepattern
+/Pat1 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop 0 0 M 8 8 L 0 8 M 8 0 L stroke
+	0 4 M 4 8 L 8 4 L 4 0 L 0 4 L stroke}
+>> matrix makepattern
+/Pat2 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop 0 0 M 0 8 L
+	8 8 L 8 0 L 0 0 L fill}
+>> matrix makepattern
+/Pat3 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop -4 8 M 8 -4 L
+	0 12 M 12 0 L stroke}
+>> matrix makepattern
+/Pat4 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop -4 0 M 8 12 L
+	0 -4 M 12 8 L stroke}
+>> matrix makepattern
+/Pat5 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop -2 8 M 4 -4 L
+	0 12 M 8 -4 L 4 12 M 10 0 L stroke}
+>> matrix makepattern
+/Pat6 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop -2 0 M 4 12 L
+	0 -4 M 8 12 L 4 -4 M 10 8 L stroke}
+>> matrix makepattern
+/Pat7 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop 8 -2 M -4 4 L
+	12 0 M -4 8 L 12 4 M 0 10 L stroke}
+>> matrix makepattern
+/Pat8 exch def
+<< Tile8x8
+ /PaintProc {0.5 setlinewidth pop 0 -2 M 12 4 L
+	-4 0 M 12 8 L -4 4 M 8 10 L stroke}
+>> matrix makepattern
+/Pat9 exch def
+/Pattern1 {PatternBgnd KeepColor Pat1 setpattern} bind def
+/Pattern2 {PatternBgnd KeepColor Pat2 setpattern} bind def
+/Pattern3 {PatternBgnd KeepColor Pat3 setpattern} bind def
+/Pattern4 {PatternBgnd KeepColor Landscape {Pat5} {Pat4} ifelse setpattern} bind def
+/Pattern5 {PatternBgnd KeepColor Landscape {Pat4} {Pat5} ifelse setpattern} bind def
+/Pattern6 {PatternBgnd KeepColor Landscape {Pat9} {Pat6} ifelse setpattern} bind def
+/Pattern7 {PatternBgnd KeepColor Landscape {Pat8} {Pat7} ifelse setpattern} bind def
+} def
+%
+%
+%End of PostScript Level 2 code
+%
+/PatternBgnd {
+  TransparentPatterns {} {gsave 1 setgray fill grestore} ifelse
+} def
+%
+% Substitute for Level 2 pattern fill codes with
+% grayscale if Level 2 support is not selected.
+%
+/Level1PatternFill {
+/Pattern1 {0.250 Density} bind def
+/Pattern2 {0.500 Density} bind def
+/Pattern3 {0.750 Density} bind def
+/Pattern4 {0.125 Density} bind def
+/Pattern5 {0.375 Density} bind def
+/Pattern6 {0.625 Density} bind def
+/Pattern7 {0.875 Density} bind def
+} def
+%
+% Now test for support of Level 2 code
+%
+Level1 {Level1PatternFill} {Level2PatternFill} ifelse
+%
+/Symbol-Oblique /Symbol findfont [1 0 .167 1 0 0] makefont
+dup length dict begin {1 index /FID eq {pop pop} {def} ifelse} forall
+currentdict end definefont pop
+/MFshow {
+   { dup 5 get 3 ge
+     { 5 get 3 eq {gsave} {grestore} ifelse }
+     {dup dup 0 get findfont exch 1 get scalefont setfont
+     [ currentpoint ] exch dup 2 get 0 exch R dup 5 get 2 ne {dup dup 6
+     get exch 4 get {Gshow} {stringwidth pop 0 R} ifelse }if dup 5 get 0 eq
+     {dup 3 get {2 get neg 0 exch R pop} {pop aload pop M} ifelse} {dup 5
+     get 1 eq {dup 2 get exch dup 3 get exch 6 get stringwidth pop -2 div
+     dup 0 R} {dup 6 get stringwidth pop -2 div 0 R 6 get
+     show 2 index {aload pop M neg 3 -1 roll neg R pop pop} {pop pop pop
+     pop aload pop M} ifelse }ifelse }ifelse }
+     ifelse }
+   forall} def
+/Gswidth {dup type /stringtype eq {stringwidth} {pop (n) stringwidth} ifelse} def
+/MFwidth {0 exch { dup 5 get 3 ge { 5 get 3 eq { 0 } { pop } ifelse }
+ {dup 3 get{dup dup 0 get findfont exch 1 get scalefont setfont
+     6 get Gswidth pop add} {pop} ifelse} ifelse} forall} def
+/MLshow { currentpoint stroke M
+  0 exch R
+  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
+/MRshow { currentpoint stroke M
+  exch dup MFwidth neg 3 -1 roll R
+  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
+/MCshow { currentpoint stroke M
+  exch dup MFwidth -2 div 3 -1 roll R
+  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
+/XYsave    { [( ) 1 2 true false 3 ()] } bind def
+/XYrestore { [( ) 1 2 true false 4 ()] } bind def
+end
+%%EndProlog
+%%Page: 1 1
+gnudict begin
+gsave
+doclip
+50 50 translate
+0.100 0.100 scale
+90 rotate
+0 -5040 translate
+0 setgray
+newpath
+(Helvetica) findfont 140 scalefont setfont
+1.000 UL
+LTb
+686 588 M
+63 0 V
+6198 0 R
+-63 0 V
+stroke
+602 588 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 2.4)]
+] -46.7 MRshow
+1.000 UL
+LTb
+686 1092 M
+63 0 V
+6198 0 R
+-63 0 V
+stroke
+602 1092 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 2.5)]
+] -46.7 MRshow
+1.000 UL
+LTb
+686 1596 M
+63 0 V
+6198 0 R
+-63 0 V
+stroke
+602 1596 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 2.6)]
+] -46.7 MRshow
+1.000 UL
+LTb
+686 2100 M
+63 0 V
+6198 0 R
+-63 0 V
+stroke
+602 2100 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 2.7)]
+] -46.7 MRshow
+1.000 UL
+LTb
+686 2604 M
+63 0 V
+6198 0 R
+-63 0 V
+stroke
+602 2604 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 2.8)]
+] -46.7 MRshow
+1.000 UL
+LTb
+686 3107 M
+63 0 V
+6198 0 R
+-63 0 V
+stroke
+602 3107 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 2.9)]
+] -46.7 MRshow
+1.000 UL
+LTb
+686 3611 M
+63 0 V
+6198 0 R
+-63 0 V
+stroke
+602 3611 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 3)]
+] -46.7 MRshow
+1.000 UL
+LTb
+686 4115 M
+63 0 V
+6198 0 R
+-63 0 V
+stroke
+602 4115 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 3.1)]
+] -46.7 MRshow
+1.000 UL
+LTb
+686 4619 M
+63 0 V
+6198 0 R
+-63 0 V
+stroke
+602 4619 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 3.2)]
+] -46.7 MRshow
+1.000 UL
+LTb
+686 588 M
+0 63 V
+0 3968 R
+0 -63 V
+stroke
+686 448 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 99)]
+] -46.7 MCshow
+1.000 UL
+LTb
+2251 588 M
+0 63 V
+0 3968 R
+0 -63 V
+stroke
+2251 448 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 99.5)]
+] -46.7 MCshow
+1.000 UL
+LTb
+3817 588 M
+0 63 V
+0 3968 R
+0 -63 V
+stroke
+3817 448 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 100)]
+] -46.7 MCshow
+1.000 UL
+LTb
+5382 588 M
+0 63 V
+0 3968 R
+0 -63 V
+stroke
+5382 448 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 100.5)]
+] -46.7 MCshow
+1.000 UL
+LTb
+6947 588 M
+0 63 V
+0 3968 R
+0 -63 V
+stroke
+6947 448 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 101)]
+] -46.7 MCshow
+1.000 UL
+LTb
+1.000 UL
+LTb
+686 4619 N
+686 588 L
+6261 0 V
+0 4031 V
+-6261 0 V
+Z stroke
+LCb setrgbcolor
+112 2603 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Helvetica) 140.0 0.0 true true 0 (Motor Angular Velocity \(radians/second\))]
+] -46.7 MCshow
+grestore
+LTb
+LCb setrgbcolor
+3816 238 M
+[ [(Helvetica) 140.0 0.0 true true 0 (Commanded PWM \(percent\))]
+] -46.7 MCshow
+LTb
+3816 4829 M
+[ [(Helvetica) 140.0 0.0 true true 0 (Velocity-PWM Relation for Unloaded Motor)]
+] -46.7 MCshow
+182 70 M
+[ [(Helvetica) 140.0 0.0 true true 0 (Mon Feb 16 16:24:05 2015)]
+] -46.7 MLshow
+1.000 UP
+1.000 UL
+LTb
+% Begin plot #1
+1.000 UP
+1.000 UL
+LT0
+LCb setrgbcolor
+6296 4486 M
+[ [(Helvetica) 140.0 0.0 true true 0 (Motor Velocity, as measured by encoder)]
+] -46.7 MRshow
+LT0
+3817 2548 Pls
+3817 2463 Pls
+3817 2650 Pls
+3817 2591 Pls
+3817 2688 Pls
+3817 2736 Pls
+3817 2758 Pls
+3817 2784 Pls
+3817 2797 Pls
+3817 2741 Pls
+3817 2870 Pls
+3817 2720 Pls
+3817 2788 Pls
+3817 2776 Pls
+3817 2645 Pls
+3817 2538 Pls
+3817 2667 Pls
+3817 2606 Pls
+3817 2549 Pls
+3817 2582 Pls
+3817 2364 Pls
+3817 2589 Pls
+3817 2399 Pls
+3817 2357 Pls
+3817 2356 Pls
+3817 2407 Pls
+3817 2414 Pls
+3817 2310 Pls
+3817 2355 Pls
+3817 2286 Pls
+3817 2387 Pls
+3817 2500 Pls
+3817 2394 Pls
+3817 2407 Pls
+3817 2327 Pls
+3817 2491 Pls
+3817 2431 Pls
+3817 2456 Pls
+3817 2419 Pls
+3817 2551 Pls
+3817 2428 Pls
+3817 2479 Pls
+3817 2406 Pls
+3817 2747 Pls
+3817 2682 Pls
+3817 2741 Pls
+3817 2697 Pls
+3817 2684 Pls
+3817 2968 Pls
+3817 2740 Pls
+3817 2830 Pls
+3817 2848 Pls
+3817 2781 Pls
+3817 2724 Pls
+3817 2735 Pls
+3817 2696 Pls
+3817 2672 Pls
+3817 2599 Pls
+3817 2601 Pls
+3817 2572 Pls
+3817 2517 Pls
+3817 2522 Pls
+3817 2409 Pls
+3817 2457 Pls
+3817 2236 Pls
+3817 2536 Pls
+3817 2361 Pls
+3817 2366 Pls
+3817 2309 Pls
+3817 2417 Pls
+3817 2362 Pls
+3817 2371 Pls
+3817 2361 Pls
+3817 2389 Pls
+3817 2455 Pls
+3817 2338 Pls
+3817 2385 Pls
+3817 2425 Pls
+3817 2345 Pls
+3817 2479 Pls
+3817 2308 Pls
+3817 2553 Pls
+3817 2445 Pls
+3817 2586 Pls
+3817 2566 Pls
+3817 2637 Pls
+3817 2731 Pls
+3817 2698 Pls
+3817 2791 Pls
+3817 2780 Pls
+3817 2771 Pls
+3817 2766 Pls
+3817 2900 Pls
+3817 2732 Pls
+3817 2794 Pls
+3817 2649 Pls
+3817 2708 Pls
+3817 2565 Pls
+3817 2706 Pls
+3817 2462 Pls
+3817 2674 Pls
+3817 1842 Pls
+3817 3207 Pls
+3817 2352 Pls
+3817 2531 Pls
+3817 2464 Pls
+3817 2335 Pls
+3817 2400 Pls
+3817 2374 Pls
+3817 2369 Pls
+3817 2344 Pls
+3817 2363 Pls
+3817 2376 Pls
+3817 2342 Pls
+3817 2380 Pls
+3817 2503 Pls
+3817 2449 Pls
+3817 2432 Pls
+3817 2452 Pls
+3817 2422 Pls
+3817 2489 Pls
+3817 2480 Pls
+3817 2403 Pls
+3817 2489 Pls
+3817 2555 Pls
+3817 2544 Pls
+3817 2742 Pls
+3817 2610 Pls
+3817 2824 Pls
+3817 2647 Pls
+3817 2881 Pls
+3817 2694 Pls
+3817 2981 Pls
+3817 2759 Pls
+3817 2852 Pls
+3817 2758 Pls
+3817 2660 Pls
+3817 2650 Pls
+3817 2800 Pls
+3817 2612 Pls
+3817 2577 Pls
+3817 2553 Pls
+3817 2497 Pls
+3817 2493 Pls
+3817 2512 Pls
+3817 2237 Pls
+3817 2540 Pls
+3817 2404 Pls
+3817 2296 Pls
+3817 2378 Pls
+3817 2366 Pls
+3817 2389 Pls
+3817 2378 Pls
+3817 2393 Pls
+3817 2303 Pls
+3817 2467 Pls
+3817 2447 Pls
+3817 2409 Pls
+3817 2233 Pls
+3817 2594 Pls
+3817 2442 Pls
+3817 2405 Pls
+3817 2408 Pls
+3817 2463 Pls
+3817 2505 Pls
+3817 2525 Pls
+3817 2609 Pls
+3817 2625 Pls
+3817 2742 Pls
+3817 2663 Pls
+3817 2883 Pls
+3817 2787 Pls
+3817 2789 Pls
+3817 2768 Pls
+3817 2821 Pls
+3817 2793 Pls
+3817 2108 Pls
+3817 3322 Pls
+3817 2648 Pls
+3817 2577 Pls
+3817 2622 Pls
+3817 2617 Pls
+3817 2453 Pls
+3817 2487 Pls
+3817 2315 Pls
+3817 2543 Pls
+3817 2376 Pls
+3817 2417 Pls
+3817 2318 Pls
+3817 2342 Pls
+3817 2333 Pls
+3817 2276 Pls
+3817 2412 Pls
+3817 2376 Pls
+3817 2328 Pls
+3817 2276 Pls
+3817 1507 Pls
+3817 3344 Pls
+3817 2374 Pls
+3817 2435 Pls
+3817 1059 Pls
+3817 3875 Pls
+3817 2429 Pls
+3817 2429 Pls
+3817 2343 Pls
+3817 2535 Pls
+3817 2511 Pls
+3817 2600 Pls
+3817 2639 Pls
+3817 2712 Pls
+3817 2728 Pls
+3817 2769 Pls
+3817 2798 Pls
+3817 2848 Pls
+3817 2745 Pls
+3817 2818 Pls
+3817 2872 Pls
+3817 2493 Pls
+3817 2983 Pls
+3817 2729 Pls
+3817 2546 Pls
+3817 2750 Pls
+3817 2558 Pls
+3817 2559 Pls
+3817 2485 Pls
+3817 2462 Pls
+3817 2447 Pls
+3817 2398 Pls
+3817 2344 Pls
+3817 2428 Pls
+3817 2316 Pls
+3817 2351 Pls
+3817 2280 Pls
+3817 2333 Pls
+3817 2258 Pls
+3817 2357 Pls
+3817 2343 Pls
+3817 2385 Pls
+3817 2369 Pls
+3817 2460 Pls
+3817 2363 Pls
+3817 1942 Pls
+3817 2998 Pls
+3817 2345 Pls
+3817 2513 Pls
+3817 2442 Pls
+3817 2153 Pls
+3817 2862 Pls
+3817 2675 Pls
+3817 2613 Pls
+3817 2776 Pls
+3817 2734 Pls
+3817 2773 Pls
+3817 2811 Pls
+3817 2763 Pls
+3817 2802 Pls
+3817 2753 Pls
+3817 2914 Pls
+3817 2685 Pls
+3817 2724 Pls
+3817 2652 Pls
+3817 2610 Pls
+3817 2596 Pls
+3817 2653 Pls
+3817 2466 Pls
+3817 2492 Pls
+3817 2484 Pls
+3817 2299 Pls
+3817 2443 Pls
+3817 2324 Pls
+3817 2341 Pls
+3817 2319 Pls
+3817 2372 Pls
+3817 2218 Pls
+3817 2304 Pls
+3817 2370 Pls
+3817 2331 Pls
+3817 2357 Pls
+3817 2273 Pls
+3817 2434 Pls
+3817 2302 Pls
+3817 1465 Pls
+3817 3341 Pls
+3817 2369 Pls
+3817 2412 Pls
+3817 2457 Pls
+3817 2423 Pls
+3817 2437 Pls
+3817 2501 Pls
+3817 2571 Pls
+3817 2459 Pls
+3817 2856 Pls
+3817 2631 Pls
+3817 2785 Pls
+3817 2744 Pls
+3817 2724 Pls
+3817 2832 Pls
+3817 2770 Pls
+3817 2676 Pls
+3817 2750 Pls
+3817 2689 Pls
+3817 2654 Pls
+3817 2572 Pls
+3817 2533 Pls
+3817 2554 Pls
+3817 2470 Pls
+3817 2451 Pls
+3817 2440 Pls
+3817 2416 Pls
+3817 2334 Pls
+3817 2316 Pls
+3817 2374 Pls
+3817 2278 Pls
+3817 2273 Pls
+3817 2318 Pls
+3817 2270 Pls
+3817 2206 Pls
+3817 2452 Pls
+3817 2311 Pls
+3817 2360 Pls
+3817 2331 Pls
+3817 2377 Pls
+3817 2430 Pls
+3817 2332 Pls
+3817 2388 Pls
+3817 2298 Pls
+3817 2500 Pls
+3817 2416 Pls
+3817 2402 Pls
+3817 2484 Pls
+3817 2542 Pls
+3817 2626 Pls
+3817 2667 Pls
+3817 2708 Pls
+3817 2684 Pls
+3817 2758 Pls
+3817 2772 Pls
+3817 2790 Pls
+3817 1514 Pls
+3817 4101 Pls
+3817 2731 Pls
+3817 2683 Pls
+3817 2578 Pls
+3817 2682 Pls
+3817 2518 Pls
+3817 2595 Pls
+3817 2496 Pls
+3817 2420 Pls
+3817 2461 Pls
+3817 2403 Pls
+3817 2317 Pls
+3817 2349 Pls
+3817 2154 Pls
+3817 2420 Pls
+3817 2304 Pls
+3817 2319 Pls
+3817 2331 Pls
+3817 2279 Pls
+3817 2308 Pls
+3817 2349 Pls
+3817 2312 Pls
+3817 2346 Pls
+3817 2343 Pls
+3817 2379 Pls
+3817 2327 Pls
+3817 2350 Pls
+3817 2320 Pls
+3817 2443 Pls
+3817 2429 Pls
+3817 2451 Pls
+3817 2423 Pls
+3817 2536 Pls
+3817 2649 Pls
+3817 2678 Pls
+3817 2624 Pls
+3817 2782 Pls
+3817 2142 Pls
+3817 3246 Pls
+3817 2739 Pls
+3817 2763 Pls
+3817 2657 Pls
+3817 2726 Pls
+3817 2696 Pls
+3817 2547 Pls
+3817 2551 Pls
+3817 2574 Pls
+3817 1562 Pls
+3817 3414 Pls
+3817 2461 Pls
+3817 1789 Pls
+3817 3001 Pls
+3817 2387 Pls
+3817 2337 Pls
+3817 2288 Pls
+3817 2324 Pls
+3817 2338 Pls
+3817 2294 Pls
+3817 2296 Pls
+3817 2293 Pls
+3817 2279 Pls
+3817 2350 Pls
+3817 2315 Pls
+3817 2340 Pls
+3817 2355 Pls
+3817 2325 Pls
+3817 2423 Pls
+3817 2347 Pls
+3817 2343 Pls
+3817 2340 Pls
+3817 2350 Pls
+3817 2433 Pls
+3817 1287 Pls
+3817 3813 Pls
+3817 2509 Pls
+3817 2710 Pls
+3817 2698 Pls
+3817 2722 Pls
+3817 2744 Pls
+3817 2792 Pls
+3817 2735 Pls
+3817 2737 Pls
+3817 2760 Pls
+3817 1297 Pls
+3817 4189 Pls
+3817 2596 Pls
+3817 2664 Pls
+3817 2506 Pls
+3817 2506 Pls
+3817 2494 Pls
+3817 2395 Pls
+3817 2417 Pls
+3817 2262 Pls
+3817 2396 Pls
+3817 2312 Pls
+3817 2260 Pls
+3817 2248 Pls
+3817 2261 Pls
+3817 2193 Pls
+3817 2291 Pls
+3817 2303 Pls
+3817 2226 Pls
+3817 2305 Pls
+3817 2309 Pls
+3817 2324 Pls
+3817 2079 Pls
+3817 2633 Pls
+3817 2364 Pls
+3817 2316 Pls
+3817 1156 Pls
+3817 3520 Pls
+3817 2394 Pls
+3817 2352 Pls
+3817 2454 Pls
+3817 2445 Pls
+3817 2585 Pls
+3817 1610 Pls
+3817 3751 Pls
+3817 2669 Pls
+3817 2698 Pls
+3817 2754 Pls
+3817 2670 Pls
+3817 2734 Pls
+3817 2757 Pls
+3817 2728 Pls
+3817 2659 Pls
+3817 2589 Pls
+3817 2564 Pls
+3817 2544 Pls
+3817 2536 Pls
+3817 2436 Pls
+3817 2446 Pls
+3817 2358 Pls
+3817 2173 Pls
+3817 2529 Pls
+3817 2258 Pls
+3817 1140 Pls
+3817 3488 Pls
+3817 2262 Pls
+3817 2271 Pls
+3817 2257 Pls
+3817 2285 Pls
+3817 2224 Pls
+3817 2333 Pls
+3817 2303 Pls
+3817 2330 Pls
+3817 2359 Pls
+3817 2382 Pls
+3817 2344 Pls
+3817 2350 Pls
+3817 2427 Pls
+3817 2395 Pls
+3817 2444 Pls
+3817 2376 Pls
+3817 2454 Pls
+3817 2535 Pls
+3817 2511 Pls
+3817 2598 Pls
+3817 2709 Pls
+3817 2670 Pls
+3817 2687 Pls
+3817 2711 Pls
+3817 2801 Pls
+3817 2804 Pls
+3817 2685 Pls
+3817 2773 Pls
+3817 2678 Pls
+3817 2764 Pls
+3817 2633 Pls
+3817 2609 Pls
+3817 2597 Pls
+3817 2331 Pls
+3817 2654 Pls
+3817 2402 Pls
+3817 2513 Pls
+3817 2449 Pls
+3817 2379 Pls
+3817 2366 Pls
+3817 2329 Pls
+3817 2345 Pls
+3817 2313 Pls
+3817 2270 Pls
+3817 2363 Pls
+3817 2227 Pls
+3817 2396 Pls
+3817 2342 Pls
+3817 2322 Pls
+3817 1737 Pls
+3817 3148 Pls
+3817 2334 Pls
+3817 1293 Pls
+3817 3630 Pls
+3817 2346 Pls
+3817 2372 Pls
+3817 2379 Pls
+3817 2450 Pls
+3817 2475 Pls
+3817 2598 Pls
+3817 2574 Pls
+3817 2682 Pls
+3817 2684 Pls
+3817 2756 Pls
+3817 2723 Pls
+3817 2686 Pls
+3817 2714 Pls
+3817 2734 Pls
+3817 2678 Pls
+3817 2768 Pls
+3817 2674 Pls
+3817 2531 Pls
+3817 2624 Pls
+3817 2514 Pls
+3817 2570 Pls
+3817 2403 Pls
+3817 2467 Pls
+3817 2356 Pls
+3817 2208 Pls
+3817 2215 Pls
+3817 2564 Pls
+3817 2269 Pls
+3817 2161 Pls
+3817 2366 Pls
+3817 2282 Pls
+3817 2318 Pls
+3817 2212 Pls
+3817 2347 Pls
+3817 2267 Pls
+3817 2247 Pls
+3817 2361 Pls
+3817 2328 Pls
+3817 2359 Pls
+3817 2315 Pls
+3817 2330 Pls
+3817 2365 Pls
+3817 2316 Pls
+3817 2424 Pls
+3817 2436 Pls
+3817 2402 Pls
+3817 2540 Pls
+3817 2549 Pls
+3817 2618 Pls
+3817 2678 Pls
+3817 2715 Pls
+3817 2730 Pls
+3817 2700 Pls
+3817 2795 Pls
+3817 2727 Pls
+3817 2726 Pls
+3817 2663 Pls
+3817 2722 Pls
+3817 2625 Pls
+3817 2578 Pls
+3817 2516 Pls
+3817 2578 Pls
+3817 2463 Pls
+3817 2474 Pls
+3817 2451 Pls
+3817 2349 Pls
+3817 2329 Pls
+3817 2375 Pls
+3817 2306 Pls
+3817 2228 Pls
+3817 2302 Pls
+3817 2256 Pls
+3817 2319 Pls
+3817 2275 Pls
+3817 2317 Pls
+3817 2290 Pls
+3817 2407 Pls
+3817 2342 Pls
+3817 2414 Pls
+3817 2429 Pls
+3817 2328 Pls
+3817 2402 Pls
+3817 2367 Pls
+3817 2338 Pls
+3817 2349 Pls
+3817 2359 Pls
+3817 2526 Pls
+3817 1429 Pls
+3817 3852 Pls
+3817 2590 Pls
+3817 2640 Pls
+3817 2722 Pls
+3817 2738 Pls
+3817 2754 Pls
+3817 2662 Pls
+3817 2853 Pls
+3817 2743 Pls
+3817 2673 Pls
+3817 2685 Pls
+3817 2613 Pls
+3817 2648 Pls
+3817 2615 Pls
+3817 2472 Pls
+3817 2542 Pls
+3817 2316 Pls
+3817 2478 Pls
+3817 2483 Pls
+3817 2381 Pls
+3817 2279 Pls
+3817 2385 Pls
+3817 2345 Pls
+3817 2287 Pls
+3817 2230 Pls
+3817 2317 Pls
+3817 2306 Pls
+3817 2267 Pls
+3817 2287 Pls
+3817 2328 Pls
+3817 2341 Pls
+3817 2299 Pls
+3817 2361 Pls
+3817 2321 Pls
+3817 2338 Pls
+3817 2309 Pls
+3817 2238 Pls
+3817 2245 Pls
+3817 2529 Pls
+3817 2424 Pls
+3817 2512 Pls
+3817 2448 Pls
+3817 2630 Pls
+3817 2756 Pls
+3817 2770 Pls
+3817 2656 Pls
+3817 2768 Pls
+3817 2759 Pls
+3817 2753 Pls
+3817 2760 Pls
+3817 2650 Pls
+3817 2538 Pls
+3817 2850 Pls
+3817 2549 Pls
+3817 2610 Pls
+3817 2508 Pls
+3817 2547 Pls
+3817 2534 Pls
+3817 2440 Pls
+3817 2322 Pls
+3817 2501 Pls
+3817 2386 Pls
+3817 2334 Pls
+3817 2287 Pls
+3817 2321 Pls
+3817 2247 Pls
+3817 2316 Pls
+3817 2385 Pls
+3817 2251 Pls
+3817 2298 Pls
+3817 2242 Pls
+3817 2438 Pls
+3817 2347 Pls
+3817 2335 Pls
+3817 2340 Pls
+3817 2379 Pls
+3817 2460 Pls
+3817 2356 Pls
+3817 2389 Pls
+3817 2402 Pls
+3817 2482 Pls
+3817 2423 Pls
+3817 2576 Pls
+3817 2560 Pls
+3817 2655 Pls
+3817 2745 Pls
+3817 2697 Pls
+3817 2790 Pls
+3817 2762 Pls
+3817 2735 Pls
+3817 2736 Pls
+3817 2739 Pls
+3817 2708 Pls
+3817 2714 Pls
+3817 2663 Pls
+3817 2601 Pls
+3817 2549 Pls
+3817 2573 Pls
+3817 2510 Pls
+3817 2450 Pls
+3817 2451 Pls
+3817 2370 Pls
+3817 2361 Pls
+3817 2316 Pls
+3817 2277 Pls
+3817 2348 Pls
+3817 2224 Pls
+3817 2325 Pls
+3817 2299 Pls
+3817 2268 Pls
+3817 2324 Pls
+3817 2376 Pls
+3817 2370 Pls
+3817 2288 Pls
+3817 2353 Pls
+3817 2474 Pls
+3817 2375 Pls
+3817 2449 Pls
+3817 2373 Pls
+3817 2384 Pls
+3817 2418 Pls
+3817 2408 Pls
+3817 2423 Pls
+3817 2608 Pls
+3817 2591 Pls
+3817 2638 Pls
+3817 2708 Pls
+3817 2704 Pls
+3817 2822 Pls
+3817 2728 Pls
+3817 2747 Pls
+3817 2767 Pls
+3817 2773 Pls
+3817 2649 Pls
+3817 2782 Pls
+3817 2706 Pls
+3817 2580 Pls
+3817 2626 Pls
+3817 2547 Pls
+3817 2527 Pls
+3817 2520 Pls
+3817 2479 Pls
+3817 2289 Pls
+3817 2476 Pls
+3817 2351 Pls
+3817 2286 Pls
+3817 2365 Pls
+3817 2253 Pls
+3817 2315 Pls
+3817 2259 Pls
+3817 2308 Pls
+3817 2316 Pls
+3817 2256 Pls
+3817 2319 Pls
+3817 2277 Pls
+3817 2277 Pls
+3817 2375 Pls
+3817 2439 Pls
+3817 2283 Pls
+3817 2360 Pls
+3817 2459 Pls
+3817 2370 Pls
+3817 2435 Pls
+3817 2418 Pls
+3817 2526 Pls
+3817 2567 Pls
+3817 2638 Pls
+3817 2688 Pls
+3817 2760 Pls
+3817 2668 Pls
+3817 2792 Pls
+3817 2214 Pls
+3817 3344 Pls
+3817 2794 Pls
+3817 2780 Pls
+3817 2671 Pls
+3817 2734 Pls
+3817 2631 Pls
+3817 2580 Pls
+3817 2479 Pls
+3817 2554 Pls
+3817 2449 Pls
+3817 2481 Pls
+3817 1602 Pls
+3817 3311 Pls
+3817 2348 Pls
+3817 2275 Pls
+3817 2393 Pls
+3817 1102 Pls
+3817 3567 Pls
+3817 2343 Pls
+3817 2248 Pls
+3817 2329 Pls
+3817 2262 Pls
+3817 2317 Pls
+3817 2323 Pls
+3817 2373 Pls
+3817 2399 Pls
+3817 2355 Pls
+3817 2389 Pls
+3817 2316 Pls
+3817 2428 Pls
+3817 2409 Pls
+3817 2455 Pls
+3817 2421 Pls
+3817 2410 Pls
+3817 2605 Pls
+3817 2588 Pls
+3817 2675 Pls
+3817 2708 Pls
+3817 2721 Pls
+3817 2756 Pls
+3817 2410 Pls
+3817 3138 Pls
+3817 2661 Pls
+3817 2841 Pls
+3817 2690 Pls
+3817 2677 Pls
+3817 2648 Pls
+3817 2510 Pls
+3817 2695 Pls
+3817 2536 Pls
+3817 2484 Pls
+3817 2482 Pls
+3817 2449 Pls
+3817 2465 Pls
+3817 2393 Pls
+3817 2303 Pls
+3817 2321 Pls
+3817 2191 Pls
+3817 2367 Pls
+3817 2168 Pls
+3817 2309 Pls
+3817 2341 Pls
+3817 2132 Pls
+3817 2478 Pls
+3817 2376 Pls
+3817 2327 Pls
+3817 2375 Pls
+3817 2305 Pls
+3817 2358 Pls
+3817 2378 Pls
+3817 2284 Pls
+3817 2435 Pls
+3817 2387 Pls
+3817 2410 Pls
+3817 2525 Pls
+3817 2458 Pls
+3817 2559 Pls
+3817 2673 Pls
+3817 2721 Pls
+3817 2653 Pls
+3817 2612 Pls
+3817 2963 Pls
+3817 2772 Pls
+3817 2765 Pls
+3817 2801 Pls
+3817 2680 Pls
+3817 2734 Pls
+3817 2460 Pls
+3817 2841 Pls
+3817 2526 Pls
+3817 2565 Pls
+3817 2466 Pls
+3817 2499 Pls
+3817 2460 Pls
+3817 2446 Pls
+3817 2396 Pls
+3817 2352 Pls
+3817 2360 Pls
+3817 2364 Pls
+3817 2368 Pls
+3817 2293 Pls
+3817 2363 Pls
+3817 2338 Pls
+3817 2335 Pls
+3817 2347 Pls
+3817 2321 Pls
+3817 2248 Pls
+3817 2522 Pls
+3817 2370 Pls
+3817 2409 Pls
+3817 2365 Pls
+3817 2403 Pls
+3817 2224 Pls
+3817 2568 Pls
+3817 2268 Pls
+3817 2647 Pls
+3817 2453 Pls
+3817 2596 Pls
+3817 2560 Pls
+3817 2715 Pls
+3817 2709 Pls
+3817 2726 Pls
+3817 2750 Pls
+3817 2802 Pls
+3817 2768 Pls
+3817 2805 Pls
+3817 2731 Pls
+3817 2710 Pls
+3817 2652 Pls
+3817 2573 Pls
+3817 2624 Pls
+3817 2560 Pls
+3817 2492 Pls
+3817 2519 Pls
+3817 2445 Pls
+3817 2443 Pls
+3817 2400 Pls
+3817 2316 Pls
+3817 2319 Pls
+3817 2294 Pls
+3817 1919 Pls
+3817 2637 Pls
+3817 2310 Pls
+3817 2187 Pls
+3817 2276 Pls
+3817 2288 Pls
+3817 2307 Pls
+3817 2254 Pls
+3817 2398 Pls
+3817 1200 Pls
+3817 3480 Pls
+3817 2456 Pls
+3817 2302 Pls
+3817 2332 Pls
+3817 2371 Pls
+3817 2351 Pls
+3817 2457 Pls
+3817 2457 Pls
+3817 2492 Pls
+3817 2598 Pls
+3817 2637 Pls
+3817 2669 Pls
+3817 2738 Pls
+3817 2748 Pls
+3817 2711 Pls
+3817 2841 Pls
+3817 2792 Pls
+3817 2718 Pls
+3817 2718 Pls
+3817 2804 Pls
+3817 2651 Pls
+3817 2574 Pls
+3817 2707 Pls
+3817 2508 Pls
+3817 2550 Pls
+3817 2462 Pls
+3817 2430 Pls
+3817 2422 Pls
+3817 2349 Pls
+3817 1572 Pls
+3817 3141 Pls
+3817 2350 Pls
+3817 2294 Pls
+3817 2315 Pls
+3817 2053 Pls
+3817 1453 Pls
+3817 3424 Pls
+3817 2333 Pls
+3817 2271 Pls
+3817 2362 Pls
+3817 2291 Pls
+3817 2423 Pls
+3817 2343 Pls
+3817 2371 Pls
+3817 2356 Pls
+3817 2341 Pls
+3817 2384 Pls
+3817 2366 Pls
+3817 2434 Pls
+3817 2515 Pls
+3817 2471 Pls
+3817 2579 Pls
+3817 2628 Pls
+3817 2696 Pls
+3817 2724 Pls
+3817 2677 Pls
+3817 2744 Pls
+3817 2703 Pls
+3817 2768 Pls
+3817 2693 Pls
+3817 2710 Pls
+3817 2597 Pls
+3817 2578 Pls
+3817 2589 Pls
+3817 2566 Pls
+3817 2480 Pls
+3817 2452 Pls
+3817 2221 Pls
+3817 2654 Pls
+6579 4486 Pls
+% End plot #1
+1.000 UL
+LTb
+686 4619 N
+686 588 L
+6261 0 V
+0 4031 V
+-6261 0 V
+Z stroke
+1.000 UP
+1.000 UL
+LTb
+stroke
+grestore
+end
+showpage
+%%Trailer
+%%DocumentFonts: Helvetica
+%%Pages: 1
