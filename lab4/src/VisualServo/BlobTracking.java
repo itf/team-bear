@@ -82,9 +82,6 @@ public class BlobTracking {
 				sums[2]+=Image.giveandget(Image.pixelBlue(pix));
 			}
 		}
-		// System.out.println("Averages: R:" + sums[0]/400 + " G: " 
-		// 	+ sums[1]/400 + " B: " + sums[2]/400);
-
 		// GaussianBlur.apply(src.pixels, dest.pixels, src.getWidth(), src.getHeight());
 		// return;
 
@@ -132,6 +129,21 @@ public class BlobTracking {
 		// return (hsb[1] > 40) && (hsb[0] < 20);
 		// return true;
 	}
+    //checks for thresholds of hues; 
+    //if very red and saturated, return "r"; 
+    //if blue and sat, return "b"; 
+    //if green and sat, return "g"; 
+    //else return "x"
+    private char blobPixelColor(int pix, int normfactor) {
+	float[] hsb = Color.RGBtoHSB(Image.giveandget(Image.pixelRed(pix)),
+				     Image.giveandget(Image.pixelGreen(pix)),
+				     Image.giveandget(Image.pixelBlue(pix)),
+				     null);
+	if (hsb[0]< 5.0/normfactor && hsb[1] > 50.0/normfactor) return 'r'; //should be red only
+	else if ((hsb[0] > 90.0/normfactor && hsb[0] < 139) && (hsb[1] > 50.0/normfactor)) return 'g';
+	else if ((hsb[0] > 200/normfactor && hsb[0] < 250) && (hsb[1] > 50.0/normfactor)) return 'b';
+	else return 'x';
+    }
 
     /* Returns a double[] containing the centroidX and the centroidY of the discovered ball.
        targetArea will be stored in this.targetArea.
@@ -143,7 +155,7 @@ public class BlobTracking {
 			for (int y=0; y<this.height;y++) {
 				pix = src.getPixel(x,y); // make sure to get the original source pixel!
 				if (blobPixel(pix, this.height)) {
-					dest.setPixel(x,y,(byte) 0xff, (byte) 0, (byte) 0xff);  // purple
+					dest.setPixel(x,y,(byte) 0xff, (byte) 0, (byte) 0);  // perfectly red
 					centroidX += x;
 					centroidY += y;
 					numbp +=1;

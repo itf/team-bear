@@ -10,6 +10,7 @@ import org.ros.node.Node;
 import org.ros.node.NodeMain;
 import org.ros.node.topic.Publisher;
 import org.ros.node.topic.Subscriber;
+import org.ros.message.rss_msgs.OdometryMsg;
 
 /**
  * 

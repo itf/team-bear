@@ -1,7 +1,7 @@
 10
 
 dir
-705
+709
 https://svn.csail.mit.edu/rss-2015/group4/lab4/launch
 https://svn.csail.mit.edu/rss-2015/group4
 
@@ -62,15 +62,37 @@ rss-student
 
 lab4.launch
 file
+710
 
 
 
-
-
-6759ec5190f30461ddb10bd387820e33
-2015-03-18T14:13:17.218472Z
-673
+2015-03-18T14:13:30.336344Z
+0874af37e3e36ed60e624102f0ccba5d
+2015-04-06T20:39:26.533103Z
+710
 rss-student
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+814
 
 config.launch
 file
