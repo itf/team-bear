@@ -27,7 +27,7 @@ public class VisualServo implements NodeMain, Runnable {
 	 * <p>The blob tracker.</p>
 	 **/
 	private BlobTracking blobTrack = null;
-    public boolean cubeInRange = false;
+    public boolean readyToGrab = false;
 
 
 	private VisionGUI gui;
@@ -37,9 +37,12 @@ public class VisualServo implements NodeMain, Runnable {
 	protected boolean firstUpdate = true;
 
 	public Subscriber<org.ros.message.sensor_msgs.Image> vidSub;
-	public Subscriber<org.ros.message.rss_msgs.OdometryMsg> odoSub;
+	public Subscriber<OdometryMsg> odoSub;
 	Publisher<MotionMsg> motionPub;
 	Publisher<ResetMsg> goalFlagPub;
+
+	// ABUSE OF MESSAGE TYPE:
+	Subscriber<ResetMsg> droppedSub; // listens for a message with reset = true from grasping
 
 	/**
 	 * <p>Create a new VisualServo object.</p>
@@ -85,26 +88,22 @@ public class VisualServo implements NodeMain, Runnable {
 			gui.setVisionImage(dest.toArray(), width, height);
 
 			// Begin Student Code
-
-			// publish velocity messages to move the robot towards the target
-			// double tv = 0.05;
-			// double rv = 0.01;
-
-			//System.out.printf(" setting velocity: %f %f\n", blobTrack.tv, blobTrack.rv);
-			
-			if (!cubeInRange){
+			if (!readyToGrab){
 			    MotionMsg msg= new MotionMsg();
+			    //System.out.printf(" setting velocity: %f %f\n", blobTrack.tv, blobTrack.rv);
 			    msg.translationalVelocity = blobTrack.tv;
 			    msg.rotationalVelocity = blobTrack.rv;
 			    motionPub.publish(msg);
+
 			    if (blobTrack.targetDetected && 
 				msg.translationalVelocity==0.0 &&
 				msg.rotationalVelocity==0.0) {
-				//we've seen the target, positioned ourselves, and stopped after servoing...so we assume cube is in range for pickup; next time no motion msg
-				cubeInRange = true;
-				ResetMsg atGoalMsg = new ResetMsg();
-				atGoalMsg.reset = true;
-				goalFlagPub.publish(atGoalMsg);
+					//we've seen the target, positioned ourselves, and stopped after servoing...so we assume cube is in range for pickup; next time no motion msg
+					readyToGrab = true;
+					// send message to Grasping2 to pick up the ball
+					ResetMsg atGoalMsg = new ResetMsg();
+					atGoalMsg.reset = true;
+					goalFlagPub.publish(atGoalMsg);
 			    }
 			}
 			// End Student Code
@@ -131,11 +130,21 @@ public class VisualServo implements NodeMain, Runnable {
 		// initialize the ROS publication to command/Motors
 		motionPub = node.newPublisher("command/Motors", "rss_msgs/MotionMsg");
 		goalFlagPub = node.newPublisher("/rss/VisualServoAtGoal", "rss_msgs/ResetMsg");
-
 		// End Student Code
 
 
 		final boolean reverseRGB = node.newParameterTree().getBoolean("reverse_rgb", false);
+		droppedSub = node.newSubscriber("/rss/Dropped", "rss_msgs/ResetMsg");
+		droppedSub.addMessageListener(new MessageListener<ResetMsg>() {
+			@Override
+			public void onNewMessage(ResetMsg m){
+				if (m.reset) {
+					readyToGrab = false;
+				} else {
+					System.out.println("what are you doing");
+				}
+			}
+		});
 
 		vidSub = node.newSubscriber("/rss/video", "sensor_msgs/Image");
 		vidSub
