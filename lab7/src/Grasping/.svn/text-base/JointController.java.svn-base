@@ -11,13 +11,15 @@ public abstract class JointController {
     static final int GRIPPER = 2;
     static final int DEFAULT_SLEW = 5;
 
-    private final int JOINT_TYPE;  // initialized by subclass
-
+    private int JOINT_TYPE;
     private int slew;
-    private int desiredPWM;
-    private boolean atGoal;
     private int minPWM;
     private int maxPWM;
+
+    // these are "state" variables
+    private int desiredPWM;
+    private boolean atGoal;
+    
 
     // initialize in here the variables that will vary
     // from subclass to subclass?
@@ -37,10 +39,10 @@ public abstract class JointController {
         int lastCommandedPWM = (int) m.pwms[JOINT_TYPE];
         if (lastCommandedPWM < minPWM) lastCommandedPWM = minPWM;
         if (lastCommandedPWM > maxPWM) lastCommandedPWM = maxPWM;
-        atGoal = false;
+        
 
-        System.out.println("last commanded: " + lastCommandedPWM + " desired: " + desiredPWM + " slew: " + slew);
-
+        // System.out.println("last commanded: " + lastCommandedPWM + " desired: " + desiredPWM + " slew: " + slew);
+        atGoal = false; 
         if (lastCommandedPWM < desiredPWM-slew) return lastCommandedPWM + slew;
         if (lastCommandedPWM > desiredPWM+slew) return lastCommandedPWM - slew;
         // else:
@@ -57,8 +59,13 @@ public abstract class JointController {
         this.setDesiredPWM(calculatePWMfromAngle(angle));
     }
 
-    public void setDesiredPWM(int p) {
-        this.desiredPWM = p;
+    public void setDesiredPWM(int newPWM) {
+        if (newPWM != this.desiredPWM) {
+            // System.out.println("changing pwm. atGoal to false");
+            atGoal = false;
+        } 
+        this.desiredPWM = newPWM;
+        // System.out.println("Desired PWM is =" + newPWM);
     }
 
     /**

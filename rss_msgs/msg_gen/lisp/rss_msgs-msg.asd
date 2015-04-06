@@ -8,6 +8,8 @@
     (:file "_package_BreakBeamMsg" :depends-on ("_package"))
     (:file "BumpMsg" :depends-on ("_package_BumpMsg"))
     (:file "_package_BumpMsg" :depends-on ("_package"))
+    (:file "VisualServoAtGoalMsg" :depends-on ("_package_VisualServoAtGoalMsg"))
+    (:file "_package_VisualServoAtGoalMsg" :depends-on ("_package"))
     (:file "MotionMsg" :depends-on ("_package_MotionMsg"))
     (:file "_package_MotionMsg" :depends-on ("_package"))
     (:file "DigitalStatusMsg" :depends-on ("_package_DigitalStatusMsg"))

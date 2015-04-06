@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 42
-/rss-2015/group4/!svn/ver/506/rss_msgs/msg
+/rss-2015/group4/!svn/ver/663/rss_msgs/msg
 END
 BumpMsg.msg
 K 25
@@ -26,6 +26,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 59
 /rss-2015/group4/!svn/ver/134/rss_msgs/msg/BreakBeamMsg.msg
+END
+VisualServoAtGoalMsg.msg
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/rss-2015/group4/!svn/ver/663/rss_msgs/msg/VisualServoAtGoalMsg.msg
 END
 ArmMsg.msg
 K 25

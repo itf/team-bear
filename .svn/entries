@@ -1,14 +1,14 @@
 10
 
 dir
-612
+683
 https://svn.csail.mit.edu/rss-2015/group4
 https://svn.csail.mit.edu/rss-2015/group4
 
 
 
-2015-03-17T21:44:29.631880Z
-612
+2015-03-18T15:21:46.684110Z
+683
 rss-student
 has-props
 
@@ -35,10 +35,10 @@ dir
 lab6
 dir
 
-lab7
+uorc_publisher
 dir
 
-uorc_publisher
+lab7
 dir
 
 ChassisSolution
@@ -60,9 +60,6 @@ MotorControl
 dir
 
 odometry
-dir
-
-orc_utils
 dir
 
 memberlist
@@ -98,6 +95,9 @@ rss-student
 
 
 47
+
+orc_utils
+dir
 
 uORCInterface.jar
 file

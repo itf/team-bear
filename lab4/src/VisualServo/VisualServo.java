@@ -4,6 +4,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 import org.ros.message.MessageListener;
 import org.ros.message.rss_msgs.MotionMsg;
+import org.ros.message.rss_msgs.ResetMsg;
 import org.ros.namespace.GraphName;
 import org.ros.node.Node;
 import org.ros.node.NodeMain;
@@ -26,6 +27,7 @@ public class VisualServo implements NodeMain, Runnable {
 	 * <p>The blob tracker.</p>
 	 **/
 	private BlobTracking blobTrack = null;
+    public boolean cubeInRange = false;
 
 
 	private VisionGUI gui;
@@ -37,6 +39,7 @@ public class VisualServo implements NodeMain, Runnable {
 	public Subscriber<org.ros.message.sensor_msgs.Image> vidSub;
 	public Subscriber<org.ros.message.rss_msgs.OdometryMsg> odoSub;
 	Publisher<MotionMsg> motionPub;
+	Publisher<ResetMsg> goalFlagPub;
 
 	/**
 	 * <p>Create a new VisualServo object.</p>
@@ -87,13 +90,23 @@ public class VisualServo implements NodeMain, Runnable {
 			// double tv = 0.05;
 			// double rv = 0.01;
 
-			System.out.printf(" setting velocity: %f %f\n", blobTrack.tv, blobTrack.rv);
-
-			MotionMsg msg= new MotionMsg();
-			msg.translationalVelocity = blobTrack.tv;
-			msg.rotationalVelocity = blobTrack.rv;
-			motionPub.publish(msg);
-
+			//System.out.printf(" setting velocity: %f %f\n", blobTrack.tv, blobTrack.rv);
+			
+			if (!cubeInRange){
+			    MotionMsg msg= new MotionMsg();
+			    msg.translationalVelocity = blobTrack.tv;
+			    msg.rotationalVelocity = blobTrack.rv;
+			    motionPub.publish(msg);
+			    if (blobTrack.targetDetected && 
+				msg.translationalVelocity==0.0 &&
+				msg.rotationalVelocity==0.0) {
+				//we've seen the target, positioned ourselves, and stopped after servoing...so we assume cube is in range for pickup; next time no motion msg
+				cubeInRange = true;
+				ResetMsg atGoalMsg = new ResetMsg();
+				atGoalMsg.reset = true;
+				goalFlagPub.publish(atGoalMsg);
+			    }
+			}
 			// End Student Code
 		}
 	}
@@ -117,6 +130,7 @@ public class VisualServo implements NodeMain, Runnable {
 
 		// initialize the ROS publication to command/Motors
 		motionPub = node.newPublisher("command/Motors", "rss_msgs/MotionMsg");
+		goalFlagPub = node.newPublisher("/rss/VisualServoAtGoal", "rss_msgs/ResetMsg");
 
 		// End Student Code
 

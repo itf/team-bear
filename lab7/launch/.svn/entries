@@ -1,14 +1,14 @@
 10
 
 dir
-613
+703
 https://svn.csail.mit.edu/rss-2015/group4/lab7/launch
 https://svn.csail.mit.edu/rss-2015/group4
 
 
 
-2015-03-16T22:52:49.529701Z
-548
+2015-03-18T14:54:37.460514Z
+679
 rss-student
 
 
@@ -32,10 +32,10 @@ file
 
 
 
-2015-03-15T19:28:01.570508Z
-c478e0c25c71e02bcaedd2d539ca353f
-2015-03-15T17:59:26.535075Z
-503
+2015-03-18T14:54:53.800658Z
+81ca1702bcc9530e949a2f5e28ba9e66
+2015-03-18T14:54:37.460514Z
+679
 rss-student
 
 
@@ -58,7 +58,7 @@ rss-student
 
 
 
-945
+943
 
 armControl.launch
 file

@@ -1,3 +1,4 @@
+from ._VisualServoAtGoalMsg import *
 from ._ArmMsg import *
 from ._EncoderMsg import *
 from ._AnalogStatusMsg import *

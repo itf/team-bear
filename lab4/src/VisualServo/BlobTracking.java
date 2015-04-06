@@ -95,17 +95,17 @@ public class BlobTracking {
 		this.blobControl();
 
 
-		// // now highlight the blobpixels:
-		// int numbp = 0;
-		// for (int x=0; x<Math.min(256,dest.getWidth());x++) {
-		// 	for (int y=0; y<Math.min(256,dest.getHeight());y++) {
-		// 		pix = src.getPixel(x,y); // make sure to get the original source pixel!
-		// 		if (blobPixel(pix, dest.getHeight())) {
-		// 			dest.setPixel(x,y,(byte) 0xff, (byte) 0, (byte) 0xff);
-		// 			numbp +=1;
-		// 		}
-		// 	}
-		// }
+		// now highlight the blobpixels:
+		int numbp = 0;
+		for (int x=0; x<Math.min(256,dest.getWidth());x++) {
+			for (int y=0; y<Math.min(256,dest.getHeight());y++) {
+				pix = src.getPixel(x,y); // make sure to get the original source pixel!
+				if (blobPixel(pix, dest.getHeight())) {
+					dest.setPixel(x,y,(byte) 0xff, (byte) 0, (byte) 0xff);
+					numbp +=1;
+				}
+			}
+		}
 
 		// // debugging:
 		// pix = src.getPixel(src.getWidth()/2,src.getHeight()/2);
@@ -201,7 +201,7 @@ public class BlobTracking {
 		if (centroidX > this.width/2) {
 		    this.targetBearing*=-1;
 		}
-		System.out.print("targetRange: " + this.targetRange + " tested targetBearing: " + (targetBearing*180/Math.PI));
+		//System.out.print("targetRange: " + this.targetRange + " tested targetBearing: " + (targetBearing*180/Math.PI));
 	       //prints degrees, not radians; target range in m
 
 		return;
@@ -224,7 +224,8 @@ public class BlobTracking {
     		} else {
     			this.rv = 0.0;
     		}
-
+		
+		
     	} else {
     		this.tv = 0.0;
     		this.rv = 0.0;

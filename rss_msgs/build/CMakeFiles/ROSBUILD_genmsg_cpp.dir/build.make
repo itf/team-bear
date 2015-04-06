@@ -41,6 +41,7 @@ CMAKE_BINARY_DIR = /home/rss-student/RSS-I-group/rss_msgs/build
 
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/BreakBeamMsg.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/BumpMsg.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/VisualServoAtGoalMsg.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/MotionMsg.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/DigitalStatusMsg.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/OdometryMsg.h
@@ -74,6 +75,18 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/rss_msgs/BumpMsg.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/rss-student/RSS-I-group/rss_msgs/msg/BumpMsg.msg
 
+../msg_gen/cpp/include/rss_msgs/VisualServoAtGoalMsg.h: ../msg/VisualServoAtGoalMsg.msg
+../msg_gen/cpp/include/rss_msgs/VisualServoAtGoalMsg.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/rss_msgs/VisualServoAtGoalMsg.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
+../msg_gen/cpp/include/rss_msgs/VisualServoAtGoalMsg.h: ../manifest.xml
+../msg_gen/cpp/include/rss_msgs/VisualServoAtGoalMsg.h: /opt/ros/electric/ros/tools/rospack/manifest.xml
+../msg_gen/cpp/include/rss_msgs/VisualServoAtGoalMsg.h: /opt/ros/electric/ros/core/roslib/manifest.xml
+../msg_gen/cpp/include/rss_msgs/VisualServoAtGoalMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
+../msg_gen/cpp/include/rss_msgs/VisualServoAtGoalMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/rss_msgs/VisualServoAtGoalMsg.h"
+	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/rss-student/RSS-I-group/rss_msgs/msg/VisualServoAtGoalMsg.msg
+
 ../msg_gen/cpp/include/rss_msgs/MotionMsg.h: ../msg/MotionMsg.msg
 ../msg_gen/cpp/include/rss_msgs/MotionMsg.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py
 ../msg_gen/cpp/include/rss_msgs/MotionMsg.h: /opt/ros/electric/ros/core/roslib/scripts/gendeps
@@ -82,7 +95,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.
 ../msg_gen/cpp/include/rss_msgs/MotionMsg.h: /opt/ros/electric/ros/core/roslib/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/MotionMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/MotionMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/rss_msgs/MotionMsg.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/rss-student/RSS-I-group/rss_msgs/msg/MotionMsg.msg
 
@@ -94,7 +107,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.
 ../msg_gen/cpp/include/rss_msgs/DigitalStatusMsg.h: /opt/ros/electric/ros/core/roslib/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/DigitalStatusMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/DigitalStatusMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/rss_msgs/DigitalStatusMsg.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/rss-student/RSS-I-group/rss_msgs/msg/DigitalStatusMsg.msg
 
@@ -106,7 +119,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.
 ../msg_gen/cpp/include/rss_msgs/OdometryMsg.h: /opt/ros/electric/ros/core/roslib/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/OdometryMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/OdometryMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/rss_msgs/OdometryMsg.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/rss-student/RSS-I-group/rss_msgs/msg/OdometryMsg.msg
 
@@ -118,7 +131,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.
 ../msg_gen/cpp/include/rss_msgs/SonarMsg.h: /opt/ros/electric/ros/core/roslib/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/SonarMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/SonarMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/rss_msgs/SonarMsg.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/rss-student/RSS-I-group/rss_msgs/msg/SonarMsg.msg
 
@@ -130,7 +143,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.
 ../msg_gen/cpp/include/rss_msgs/ArmMsg.h: /opt/ros/electric/ros/core/roslib/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/ArmMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/ArmMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/rss_msgs/ArmMsg.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/rss-student/RSS-I-group/rss_msgs/msg/ArmMsg.msg
 
@@ -142,7 +155,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.
 ../msg_gen/cpp/include/rss_msgs/ResetMsg.h: /opt/ros/electric/ros/core/roslib/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/ResetMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/ResetMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/rss_msgs/ResetMsg.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/rss-student/RSS-I-group/rss_msgs/msg/ResetMsg.msg
 
@@ -154,7 +167,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.
 ../msg_gen/cpp/include/rss_msgs/EncoderMsg.h: /opt/ros/electric/ros/core/roslib/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/EncoderMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/EncoderMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/rss_msgs/EncoderMsg.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/rss-student/RSS-I-group/rss_msgs/msg/EncoderMsg.msg
 
@@ -166,13 +179,14 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.
 ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.h: /opt/ros/electric/ros/core/roslib/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/manifest.xml
 ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/rss-student/RSS-I-group/rss_msgs/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/rss_msgs/AnalogStatusMsg.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/rss-student/RSS-I-group/rss_msgs/msg/AnalogStatusMsg.msg
 
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/BreakBeamMsg.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/BumpMsg.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/VisualServoAtGoalMsg.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/MotionMsg.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/DigitalStatusMsg.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/rss_msgs/OdometryMsg.h

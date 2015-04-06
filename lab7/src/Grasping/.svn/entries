@@ -1,14 +1,14 @@
 10
 
 dir
-613
+703
 https://svn.csail.mit.edu/rss-2015/group4/lab7/src/Grasping
 https://svn.csail.mit.edu/rss-2015/group4
 
 
 
-2015-03-17T21:52:10.215870Z
-613
+2015-03-18T19:12:56.169728Z
+703
 rss-student
 
 
@@ -32,10 +32,10 @@ file
 
 
 
-2015-03-17T21:53:39.972622Z
-d78409dc2c0864778e8594bf173bfd0c
-2015-03-17T21:52:10.215870Z
-613
+2015-03-18T19:12:18.566397Z
+d68470b421a493a1a29b03b53c00fded
+2015-03-18T19:12:09.234080Z
+701
 rss-student
 
 
@@ -58,7 +58,7 @@ rss-student
 
 
 
-6006
+7650
 
 SensorAverage.java
 file
@@ -100,10 +100,10 @@ file
 
 
 
-2015-03-17T02:06:57.886735Z
-bd14f0d7ca021f045883bb2cdac396c9
-2015-03-17T02:06:52.808274Z
-605
+2015-03-18T16:44:58.839403Z
+bd88b1e7e0a7bc67336ffdd58514d30f
+2015-03-18T16:44:49.546634Z
+692
 rss-student
 
 
@@ -126,7 +126,7 @@ rss-student
 
 
 
-2282
+2518
 
 ShoulderController.java
 file
@@ -134,10 +134,10 @@ file
 
 
 
-2015-03-17T01:09:26.185619Z
-367d85f99831d4d0824cfbca5a14ff7f
-2015-03-17T01:09:17.117523Z
-592
+2015-03-17T23:47:18.015129Z
+974e7981e962fdc2446bfba2011f17e7
+2015-03-17T23:46:07.698210Z
+626
 rss-student
 
 
@@ -160,7 +160,7 @@ rss-student
 
 
 
-551
+683
 
 Grasping.java
 file
@@ -236,10 +236,10 @@ file
 
 
 
-2015-03-17T21:41:26.396985Z
-c2b872598cec005144ecc10aacc81383
-2015-03-17T21:41:23.727141Z
-610
+2015-03-18T19:13:15.458679Z
+d9ad8617f3415cbebc4eecf84ab9d71a
+2015-03-18T19:12:56.169728Z
+703
 rss-student
 
 
@@ -262,7 +262,7 @@ rss-student
 
 
 
-2523
+11550
 
 GripperController.java
 file

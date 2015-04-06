@@ -6,6 +6,7 @@ FILE(REMOVE_RECURSE
   "../src/rss_msgs/msg/__init__.py"
   "../src/rss_msgs/msg/_BreakBeamMsg.py"
   "../src/rss_msgs/msg/_BumpMsg.py"
+  "../src/rss_msgs/msg/_VisualServoAtGoalMsg.py"
   "../src/rss_msgs/msg/_MotionMsg.py"
   "../src/rss_msgs/msg/_DigitalStatusMsg.py"
   "../src/rss_msgs/msg/_OdometryMsg.py"

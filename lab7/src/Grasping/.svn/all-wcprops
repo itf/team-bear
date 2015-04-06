@@ -1,13 +1,13 @@
 K 25
 svn:wc:ra_dav:version-url
 V 47
-/rss-2015/group4/!svn/ver/613/lab7/src/Grasping
+/rss-2015/group4/!svn/ver/703/lab7/src/Grasping
 END
 ArmController.java
 K 25
 svn:wc:ra_dav:version-url
 V 66
-/rss-2015/group4/!svn/ver/613/lab7/src/Grasping/ArmController.java
+/rss-2015/group4/!svn/ver/701/lab7/src/Grasping/ArmController.java
 END
 SensorAverage.java
 K 25
@@ -19,13 +19,13 @@ JointController.java
 K 25
 svn:wc:ra_dav:version-url
 V 68
-/rss-2015/group4/!svn/ver/605/lab7/src/Grasping/JointController.java
+/rss-2015/group4/!svn/ver/692/lab7/src/Grasping/JointController.java
 END
 ShoulderController.java
 K 25
 svn:wc:ra_dav:version-url
 V 71
-/rss-2015/group4/!svn/ver/592/lab7/src/Grasping/ShoulderController.java
+/rss-2015/group4/!svn/ver/626/lab7/src/Grasping/ShoulderController.java
 END
 Grasping.java
 K 25
@@ -43,7 +43,7 @@ Grasping2.java
 K 25
 svn:wc:ra_dav:version-url
 V 62
-/rss-2015/group4/!svn/ver/610/lab7/src/Grasping/Grasping2.java
+/rss-2015/group4/!svn/ver/703/lab7/src/Grasping/Grasping2.java
 END
 GripperController.java
 K 25

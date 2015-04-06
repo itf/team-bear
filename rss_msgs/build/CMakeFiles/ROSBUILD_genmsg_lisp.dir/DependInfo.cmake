@@ -16,6 +16,7 @@ SET(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/rss-student/RSS-I-group/rss_msgs/msg_gen/lisp/_package_OdometryMsg.lisp" "/home/rss-student/RSS-I-group/rss_msgs/msg_gen/lisp/OdometryMsg.lisp"
   "/home/rss-student/RSS-I-group/rss_msgs/msg_gen/lisp/_package_ResetMsg.lisp" "/home/rss-student/RSS-I-group/rss_msgs/msg_gen/lisp/ResetMsg.lisp"
   "/home/rss-student/RSS-I-group/rss_msgs/msg_gen/lisp/_package_SonarMsg.lisp" "/home/rss-student/RSS-I-group/rss_msgs/msg_gen/lisp/SonarMsg.lisp"
+  "/home/rss-student/RSS-I-group/rss_msgs/msg_gen/lisp/_package_VisualServoAtGoalMsg.lisp" "/home/rss-student/RSS-I-group/rss_msgs/msg_gen/lisp/VisualServoAtGoalMsg.lisp"
   )
 
 

@@ -1,14 +1,14 @@
 10
 
 dir
-612
+683
 https://svn.csail.mit.edu/rss-2015/group4/rss_msgs/msg
 https://svn.csail.mit.edu/rss-2015/group4
 
 
 
-2015-03-15T18:56:05.091529Z
-506
+2015-03-18T03:28:25.144865Z
+663
 rss-student
 
 
@@ -161,6 +161,40 @@ rss-student
 
 
 15
+
+VisualServoAtGoalMsg.msg
+file
+
+
+
+
+2015-03-18T13:30:49.887647Z
+8871aefd0a49329f07f75943cf152ccd
+2015-03-18T03:28:25.144865Z
+663
+rss-student
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11
 
 ArmMsg.msg
 file

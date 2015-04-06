@@ -5,6 +5,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/ROSBUILD_genmsg_cpp"
   "../msg_gen/cpp/include/rss_msgs/BreakBeamMsg.h"
   "../msg_gen/cpp/include/rss_msgs/BumpMsg.h"
+  "../msg_gen/cpp/include/rss_msgs/VisualServoAtGoalMsg.h"
   "../msg_gen/cpp/include/rss_msgs/MotionMsg.h"
   "../msg_gen/cpp/include/rss_msgs/DigitalStatusMsg.h"
   "../msg_gen/cpp/include/rss_msgs/OdometryMsg.h"
